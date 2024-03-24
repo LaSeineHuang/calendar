@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView tvVersion = (TextView) findViewById(R.id.tv_version);
+        //TextView tvVersion = (TextView) findViewById(R.id.tv_version);
 
         ///大大实打实大生的dasdasdasdasddasd
     }

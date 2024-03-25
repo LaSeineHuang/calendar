@@ -1,9 +1,17 @@
 package com.example.calendar.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -32,13 +40,15 @@ import java.util.Map;
 /**
  * Created by necer on 2018/11/12.
  */
-public class MonthActivity extends BaseActivity {
+public class MonthActivity<activity_month> extends BaseActivity {
 
     private HuangCalendar miui10Calendar;
 
     private TextView tv_result;
     private TextView tv_data;
     private TextView tv_desc;
+
+    private Button searchButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -119,6 +129,52 @@ public class MonthActivity extends BaseActivity {
             }
 
         });
+        // 找到Search按钮并设置点击监听器
+        searchButton = findViewById(R.id.Search);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showOptionsDialog();
+            }
+        });
+    }
+
+    private void showOptionsDialog() {
+        // 创建AlertDialog.Builder对象
+        AlertDialog.Builder builder = new AlertDialog.Builder(MonthActivity.this);
+
+        // 定义选项和点击事件监听器
+        CharSequence[] options = {"跳转到指定日期", "查询日程"};
+        builder.setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (which == 0) {
+                    // “跳转到指定日期”选项被选中
+                    // 在这里添加跳转逻辑
+                    Toast.makeText(MonthActivity.this, "跳转到指定日期", Toast.LENGTH_SHORT).show();
+                } else if (which == 1) {
+                    // “查询日程”选项被选中
+                    // 在这里添加查询逻辑
+                    Toast.makeText(MonthActivity.this, "查询日程", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        // 创建并显示AlertDialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        Window window = dialog.getWindow();
+        if (window != null) {
+            WindowManager.LayoutParams layoutParams = window.getAttributes();
+            // 这里可以调整位置，例如：
+            layoutParams.gravity = Gravity.TOP | Gravity.LEFT; // 设置为顶部左侧
+            layoutParams.x = 700; // 从左侧边缘向右侧移动100像素
+            layoutParams.y = 300; // 从顶部向下移动100像素
+            layoutParams.width = 700; // 比如，宽度设置为600像素
+            layoutParams.height = 400; // 高度设置为400像素
+
+            window.setAttributes(layoutParams);
+        }
 
 
     }

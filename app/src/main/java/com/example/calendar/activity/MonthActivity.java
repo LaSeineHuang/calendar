@@ -34,7 +34,7 @@ import java.util.Map;
  */
 public class MonthActivity extends BaseActivity {
 
-    private Miui10Calendar miui10Calendar;
+    private HuangCalendar miui10Calendar;
 
     private TextView tv_result;
     private TextView tv_data;
@@ -43,7 +43,7 @@ public class MonthActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_month);
         tv_result = findViewById(R.id.tv_result);
         tv_data = findViewById(R.id.tv_data);
         tv_desc = findViewById(R.id.tv_desc);

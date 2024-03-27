@@ -39,6 +39,7 @@ import java.util.Map;
 
 /**
  * Created by necer on 2018/11/12.
+ * updata by huang on 2024/3/27
  */
 public class MonthActivity<activity_month> extends BaseActivity {
 
@@ -168,9 +169,9 @@ public class MonthActivity<activity_month> extends BaseActivity {
             WindowManager.LayoutParams layoutParams = window.getAttributes();
             // 这里可以调整位置，例如：
             layoutParams.gravity = Gravity.TOP | Gravity.LEFT; // 设置为顶部左侧
-            layoutParams.x = 700; // 从左侧边缘向右侧移动100像素
-            layoutParams.y = 300; // 从顶部向下移动100像素
-            layoutParams.width = 700; // 比如，宽度设置为600像素
+            layoutParams.x = 700; // 从左侧边缘向右侧移动700像素
+            layoutParams.y = 300; // 从顶部向下移动300像素
+            layoutParams.width = 700; // 宽度设置为700像素
             layoutParams.height = 400; // 高度设置为400像素
 
             window.setAttributes(layoutParams);

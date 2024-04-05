@@ -22,6 +22,18 @@
         <activity
             android:name="com.example.calendar.activity.MonthActivity"
             android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name="com.example.calendar.activity.AddScheduleActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name="com.example.calendar.activity.CurrentSurplusActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name="com.example.calendar.activity.DataDisplayActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name="com.example.calendar.activity.ScheduleQueryResultsActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
     </application>
 
 </manifest>

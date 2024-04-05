@@ -49,6 +49,8 @@ public class MonthActivity<activity_month> extends BaseActivity {
     private TextView tv_data;
     private TextView tv_desc;
 
+    private TextView tv_zang;//显示藏历
+
     private Button searchButton;
 
     @Override
@@ -58,6 +60,7 @@ public class MonthActivity<activity_month> extends BaseActivity {
         tv_result = findViewById(R.id.tv_result);
         tv_data = findViewById(R.id.tv_data);
         tv_desc = findViewById(R.id.tv_desc);
+        tv_zang = findViewById(R.id.tv_zang);
         List<String> pointList = Arrays.asList("2018-10-01", "2018-11-19", "2018-11-20", "2018-05-23", "2019-01-01", "2018-12-23");
 
         miui10Calendar = findViewById(R.id.huangCalendar);
@@ -108,6 +111,7 @@ public class MonthActivity<activity_month> extends BaseActivity {
                 Log.d(TAG, "   dateChangeBehavior " + dateChangeBehavior);
 
                 Log.e(TAG, "baseCalendar::" + baseCalendar);
+                tv_zang.setText("藏历："+year + "年" + month + "月" );
                 if (localDate != null) {
                     CalendarDate calendarDate = CalendarUtil.getCalendarDate(localDate);
                     Lunar lunar = calendarDate.lunar;

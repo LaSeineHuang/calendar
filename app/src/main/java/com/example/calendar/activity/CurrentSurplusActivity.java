@@ -23,11 +23,10 @@ public class CurrentSurplusActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_current_surplus);
         initView();
         initData();
-        rvActivityCurrentView =  findViewById(R.id.rv_activity_current_view);
-
     }
 
     private void initView(){
+        rvActivityCurrentView =  findViewById(R.id.rv_activity_current_view);
         rvActivityCurrentView.setAdapter(adapter);
     }
 

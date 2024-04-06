@@ -1,7 +1,12 @@
 package com.example.calendar.activity;
 
+import static com.example.calendar.activity.AddScheduleActivity.ADD_SCHEDULE_BEAN_KEY;
+import static com.example.calendar.activity.ScheduleQueryResultsActivity.QUERY_RESULT_KEY;
+
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,12 +15,23 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.calendar.R;
+import com.example.calendar.activity.Bean.ScheduleQueryBean;
+import com.example.calendar.activity.adapter.ScheduleQueryResultsAdapter;
+import com.example.calendar.activity.cumulativeDATA.Cumulative;
+import com.example.calendar.activity.cumulativeDATA.TingYear;
+import com.example.calendar.activity.dialog.DialogUtils;
+import com.example.calendar.activity.dialog.IConfirmAndCancelCallBack;
 import com.necer.calendar.BaseCalendar;
 import com.necer.calendar.HuangCalendar;
 import com.necer.calendar.Miui10Calendar;
@@ -27,6 +43,7 @@ import com.necer.listener.OnCalendarMultipleChangedListener;
 //import com.necer.ncalendar.R;
 import com.necer.painter.InnerPainter;
 import com.necer.utils.CalendarUtil;
+import com.necer.view.WeekBar;
 
 import org.joda.time.LocalDate;
 
@@ -48,19 +65,45 @@ public class MonthActivity<activity_month> extends BaseActivity {
     private TextView tv_result;
     private TextView tv_data;
     private TextView tv_desc;
+    private TextView ivScheduleAdd;
+
+    private FrameLayout flActivityMonthQuery;
 
     private TextView tv_zang;//显示藏历
 
-    private Button searchButton;
+    private Button searchButton,btSchedule,btMonthView;
 
+    private NestedScrollView svActivityMonthView;
+
+    private RecyclerView rvActivityMonthQuery;
+    private WeekBar wbActivityMonthView;
+
+
+    private List<ScheduleQueryBean> listData = new ArrayList<ScheduleQueryBean>();//查询日程对应的数据
+    private ScheduleQueryResultsAdapter adapter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_month);
+        initView();
+        initListener();
+        initData();
+    }
+
+    private void initView(){
         tv_result = findViewById(R.id.tv_result);
         tv_data = findViewById(R.id.tv_data);
         tv_desc = findViewById(R.id.tv_desc);
         tv_zang = findViewById(R.id.tv_zang);
+        btMonthView = findViewById(R.id.bt_monthView);
+        btSchedule = findViewById(R.id.bt_schedule);
+        svActivityMonthView = findViewById(R.id.sv_activity_month_view);
+        rvActivityMonthQuery = findViewById(R.id.rv_activity_month_query);
+        wbActivityMonthView = findViewById(R.id.wb_activity_month_view);
+        flActivityMonthQuery = findViewById(R.id.fl_activity_month_query);
+        ivScheduleAdd = findViewById(R.id.iv_schedule_add);
+
+
         List<String> pointList = Arrays.asList("2018-10-01", "2018-11-19", "2018-11-20", "2018-05-23", "2019-01-01", "2018-12-23");
 
         miui10Calendar = findViewById(R.id.huangCalendar);
@@ -102,7 +145,8 @@ public class MonthActivity<activity_month> extends BaseActivity {
         workdayList.add("2019-7-25");
 
         innerPainter.setLegalHolidayList(holidayList, workdayList);
-
+    }
+    private void initListener(){
         miui10Calendar.setOnCalendarChangedListener(new OnCalendarChangedListener() {
             @Override
             public void onCalendarChange(BaseCalendar baseCalendar, int year, int month, LocalDate localDate, DateChangeBehavior dateChangeBehavior) {
@@ -111,7 +155,8 @@ public class MonthActivity<activity_month> extends BaseActivity {
                 Log.d(TAG, "   dateChangeBehavior " + dateChangeBehavior);
 
                 Log.e(TAG, "baseCalendar::" + baseCalendar);
-                tv_zang.setText("藏历："+year + "年" + month + "月" );
+                TingYear tingYear = Cumulative.mainCumulative(year,month);
+                tv_zang.setText("藏历："+tingYear.getYear() + "年" + tingYear.getMonth() + "月" );
                 if (localDate != null) {
                     CalendarDate calendarDate = CalendarUtil.getCalendarDate(localDate);
                     Lunar lunar = calendarDate.lunar;
@@ -142,7 +187,49 @@ public class MonthActivity<activity_month> extends BaseActivity {
                 showOptionsDialog();
             }
         });
+
+        btSchedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //点击日程
+                flActivityMonthQuery.setVisibility(View.VISIBLE);
+                miui10Calendar.setVisibility(View.GONE);
+                tv_result.setVisibility(View.GONE);
+                wbActivityMonthView.setVisibility(View.GONE);
+            }
+        });
+        btMonthView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //点击月
+                flActivityMonthQuery.setVisibility(View.GONE);
+                miui10Calendar.setVisibility(View.VISIBLE);
+                tv_result.setVisibility(View.VISIBLE);
+                wbActivityMonthView.setVisibility(View.VISIBLE);
+            }
+        });
+        //点击添加新日程的按钮
+        ivScheduleAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //跳转到添加日程界面
+                Intent intent = new Intent(MonthActivity.this,AddScheduleActivity.class);
+                MonthActivity.this.startActivityForResult(intent,10001);
+            }
+        });
     }
+    private void initData(){
+
+        //这里目前设置的查询的假数据
+        listData.add(new ScheduleQueryBean("数据1","北京","1111","11111"));
+        listData.add(new ScheduleQueryBean("数据2","上海","1111","11111"));
+        listData.add(new ScheduleQueryBean("数据3","广州","1111","11111"));
+        //这里填写数据
+        adapter = new ScheduleQueryResultsAdapter(listData);
+        rvActivityMonthQuery.setAdapter(adapter);
+    }
+
+
 
     private void showOptionsDialog() {
         // 创建AlertDialog.Builder对象
@@ -156,11 +243,32 @@ public class MonthActivity<activity_month> extends BaseActivity {
                 if (which == 0) {
                     // “跳转到指定日期”选项被选中
                     // 在这里添加跳转逻辑
-                    Toast.makeText(MonthActivity.this, "跳转到指定日期", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MonthActivity.this, "跳转到指定日期", Toast.LENGTH_SHORT).show();
+                    DialogUtils.showDatePickerDialog(MonthActivity.this, new DatePickerDialog.OnDateSetListener() {
+                        @Override
+                        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                            //当选择完后将时间显示,记得月份i1加一
+//                            etEndQueryTime.setText(year + "年" + (month+1) + "月" + dayOfMonth + "日");
+                            miui10Calendar.jumpDate(year,month+1,dayOfMonth);
+                        }
+                    });
                 } else if (which == 1) {
                     // “查询日程”选项被选中
                     // 在这里添加查询逻辑
-                    Toast.makeText(MonthActivity.this, "查询日程", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MonthActivity.this, "查询日程", Toast.LENGTH_SHORT).show();
+                    DialogUtils.showDateQueryDialog(MonthActivity.this, new IConfirmAndCancelCallBack() {
+                        @Override
+                        public void confirm(String content) {
+                            //跳转到日程查询结果界面
+                            Intent intent = new Intent(MonthActivity.this,ScheduleQueryResultsActivity.class);
+                            intent.putExtra(QUERY_RESULT_KEY,content);
+                            MonthActivity.this.startActivity(intent);
+                        }
+
+                        public void cancel() {
+
+                        }
+                    });
                 }
             }
         });
@@ -184,5 +292,13 @@ public class MonthActivity<activity_month> extends BaseActivity {
 
     }
 
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 10001 && resultCode == RESULT_OK && data!= null){
+            //这里是添加日程返回来的数据
+            ScheduleQueryBean bean = (ScheduleQueryBean) data.getSerializableExtra(ADD_SCHEDULE_BEAN_KEY);
+            adapter.addData(bean);
+        }
+    }
 }

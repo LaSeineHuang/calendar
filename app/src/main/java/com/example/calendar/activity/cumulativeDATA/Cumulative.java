@@ -1,7 +1,7 @@
 package com.example.calendar.activity.cumulativeDATA;
 
-public class cumulative {
-    public static void mainCumulative(int year,int month) {
+public class Cumulative {
+    public static TingYear mainCumulative(int year, int month) {
         //int year,month; //1027-2500
         //year=1987; //在此处填入年份
         //month=3;  //在此处填入月份
@@ -28,9 +28,10 @@ public class cumulative {
         }else{
             //System.out.println("当月不是闰月");
         }
-        Year y=new Year(year,month,cumulativeYear,0,cumulative[1]);
+        TingYear y=new TingYear(year,month,cumulativeYear,0,cumulative[1]);
         y.setCumulativeMonth2(cumulative[0]);
-        y.toString(y);
+        return y ;
+//        y.toString(y);
 
     }
     public static int getLiyuan(int year,int month)

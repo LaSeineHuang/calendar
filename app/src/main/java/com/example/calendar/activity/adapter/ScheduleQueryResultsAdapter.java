@@ -21,7 +21,7 @@ public class ScheduleQueryResultsAdapter extends BaseQuickAdapter<ScheduleQueryB
 
     @Override
     protected void convert(@NonNull BaseViewHolder baseViewHolder, ScheduleQueryBean bean) {
-        baseViewHolder.setText(R.id.tv_item_query_results_content,bean.getContent());
+        baseViewHolder.setText(R.id.tv_item_query_results_content,bean.getTitle());
     }
 
 }

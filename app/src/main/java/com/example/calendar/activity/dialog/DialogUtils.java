@@ -9,14 +9,17 @@ import android.text.InputFilter;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.example.calendar.R;
+import com.example.calendar.activity.view.DateTimePickerView;
 
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -89,5 +92,49 @@ public class DialogUtils {
     }
 
 
+    public static void showDateTimePickerDialog(Context context,IConfirmAndCancelCallBack callBack){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setView(LayoutInflater.from(context).inflate(R.layout.dialog_time, null));
+        Dialog dialog = builder.create();
+        dialog.show();
+        DateTimePickerView dateTimePickerView = dialog.findViewById(R.id.datePickerView);
+        final String[] dateArryString = new String[1];
+        Calendar date = dateTimePickerView.getSelectedDate();
+        int year = date.get(Calendar.YEAR);
+        int month = date.get(Calendar.MONTH);
+        int dayOfMonth = date.get(Calendar.DAY_OF_MONTH);
+        int hour = date.get(Calendar.HOUR_OF_DAY);
+        int minute = date.get(Calendar.MINUTE);
+        dateArryString[0] = String.format(Locale.getDefault(), "%d年%02d月%02d日%02d时%02d分", year, month + 1, dayOfMonth, hour, minute);
+        dateTimePickerView.setOnSelectedDateChangedListener(new DateTimePickerView.OnSelectedDateChangedListener() {
+            @Override
+            public void onSelectedDateChanged(Calendar date) {
+                int year = date.get(Calendar.YEAR);
+                int month = date.get(Calendar.MONTH);
+                int dayOfMonth = date.get(Calendar.DAY_OF_MONTH);
+                int hour = date.get(Calendar.HOUR_OF_DAY);
+                int minute = date.get(Calendar.MINUTE);
+                dateArryString[0] = String.format(Locale.getDefault(), "%d年%02d月%02d日%02d时%02d分", year, month + 1, dayOfMonth, hour, minute);
+//                textView.setText(dateString);
+//                Log.d("111111111", "new date: " + dateString);
+            }
+        });
+        dialog.findViewById(R.id.bt_dialog_time_confirm).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!TextUtils.isEmpty(dateArryString[0])){
+                    callBack.confirm(dateArryString[0]);
+                }
+                dialog.dismiss();
+            }
+        });
+        dialog.findViewById(R.id.bt_dialog_time_cancel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callBack.cancel();
+                dialog.dismiss();
+            }
+        });
+    }
 
 }

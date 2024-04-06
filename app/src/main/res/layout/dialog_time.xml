@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="wrap_content">
+
+
+    <com.example.calendar.activity.view.DateTimePickerView
+        android:id="@+id/datePickerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:preferredMaxOffsetItemCount="4"
+        app:textSize="18sp"
+        app:type="yearMonthDayHourMinute"
+        app:minutesInterval="one"
+        app:curved="false"
+        android:background="#e7e7e7"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/bt_dialog_time_confirm"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="确定"
+            android:layout_marginRight="5dp"
+            android:layout_height="45dp"/>
+
+        <Button
+            android:id="@+id/bt_dialog_time_cancel"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="取消"
+            android:layout_marginLeft="5dp"
+            android:layout_height="45dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

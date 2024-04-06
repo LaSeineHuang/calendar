@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.calendar.R;
 import com.example.calendar.activity.Bean.ScheduleQueryBean;
 import com.example.calendar.activity.dialog.DialogUtils;
+import com.example.calendar.activity.dialog.IConfirmAndCancelCallBack;
 
 /**
  * 新建日程界面
@@ -83,11 +84,14 @@ public class AddScheduleActivity extends AppCompatActivity {
         ivStartQueryImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogUtils.showDatePickerDialog(AddScheduleActivity.this, new DatePickerDialog.OnDateSetListener() {
+                DialogUtils.showDateTimePickerDialog(AddScheduleActivity.this, new IConfirmAndCancelCallBack() {
                     @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        //当选择完后将时间显示,记得月份i1加一
-                        etStartQueryTime.setText(year + "年" + (month+1) + "月" + dayOfMonth + "日");
+                    public void confirm(String content) {
+                        etStartQueryTime.setText(content);
+                    }
+
+                    @Override
+                    public void cancel() {
 
                     }
                 });
@@ -97,11 +101,16 @@ public class AddScheduleActivity extends AppCompatActivity {
         ivEndQueryImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogUtils.showDatePickerDialog(AddScheduleActivity.this, new DatePickerDialog.OnDateSetListener() {
+
+                DialogUtils.showDateTimePickerDialog(AddScheduleActivity.this, new IConfirmAndCancelCallBack() {
                     @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        //当选择完后将时间显示,记得月份i1加一
-                        etEndQueryTime.setText(year + "年" + (month+1) + "月" + dayOfMonth + "日");
+                    public void confirm(String content) {
+                        etEndQueryTime.setText(content);
+                    }
+
+                    @Override
+                    public void cancel() {
+
                     }
                 });
             }

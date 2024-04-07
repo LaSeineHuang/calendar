@@ -249,6 +249,10 @@ public class MonthActivity<activity_month> extends BaseActivity {
                         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                             //当选择完后将时间显示,记得月份i1加一
 //                            etEndQueryTime.setText(year + "年" + (month+1) + "月" + dayOfMonth + "日");
+                            flActivityMonthQuery.setVisibility(View.GONE);
+                            miui10Calendar.setVisibility(View.VISIBLE);
+                            tv_result.setVisibility(View.VISIBLE);
+                            wbActivityMonthView.setVisibility(View.VISIBLE);
                             miui10Calendar.jumpDate(year,month+1,dayOfMonth);
                         }
                     });

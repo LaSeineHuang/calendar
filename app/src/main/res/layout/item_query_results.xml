@@ -11,7 +11,7 @@
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/main_make"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp" />
     <TextView
@@ -19,14 +19,15 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:textColor="@color/color_666666"
+        android:textSize="16sp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp" />
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@mipmap/ic_launcher"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/icon_col_selected"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp" />
 

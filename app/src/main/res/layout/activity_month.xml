@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="1">
@@ -23,6 +23,8 @@
 
             <Button
                 android:id="@+id/YearView"
+                android:textColor="@color/white"
+                android:background="@drawable/bg_fs_first_rank_vote_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="年" />
@@ -30,11 +32,15 @@
             <Button
                 android:id="@+id/bt_monthView"
                 android:layout_width="wrap_content"
+                android:textColor="@color/white"
+                android:background="@drawable/bg_fs_second_rank_vote_num"
                 android:layout_height="wrap_content"
                 android:text="月" />
 
             <Button
                 android:id="@+id/bt_schedule"
+                android:textColor="@color/white"
+                android:background="@drawable/bg_fs_third_rank_vote_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="日程" />
@@ -49,8 +55,8 @@
             <Button
                 android:id="@+id/Search"
                 android:layout_width="60dp"
-                android:layout_height="40dp"
-                android:background="@android:drawable/ic_menu_search" />
+                android:layout_height="60dp"
+                android:background="@drawable/icon_topic_search" />
         </LinearLayout>
     </LinearLayout>
 
@@ -138,18 +144,14 @@
         app:layoutManager="LinearLayoutManager"
         tools:listitem="@layout/item_query_results" />
 
-        <TextView
+        <ImageView
             android:id="@+id/iv_schedule_add"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:text="添加"
-            android:textColor="@color/white"
-            android:gravity="center"
             android:layout_marginBottom="50dp"
             android:layout_marginRight="20dp"
             android:layout_gravity="bottom|end"
-            android:background="@color/color_666666"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@drawable/ic_topic_publish"/>
 
     </FrameLayout>
 

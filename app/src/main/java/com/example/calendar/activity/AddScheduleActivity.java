@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.blankj.utilcode.util.StringUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.example.calendar.R;
 import com.example.calendar.activity.Bean.ScheduleQueryBean;
 import com.example.calendar.activity.dialog.DialogUtils;
@@ -31,7 +33,9 @@ public class AddScheduleActivity extends AppCompatActivity {
 
     private Button btAddCancel;//取消
 
-    private TextView btAddReturn,tvAddConfirm;//返回、确认
+    private TextView tvAddConfirm;//确认
+
+    private ImageView btAddReturn;//返回
 
     private EditText etTitleView,etLocaleView;
 
@@ -56,6 +60,14 @@ public class AddScheduleActivity extends AppCompatActivity {
         tvAddConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (StringUtils.isEmpty(etTitleView.getText().toString())
+                        ||StringUtils.isEmpty(etLocaleView.getText().toString())
+                        ||StringUtils.isEmpty(etStartQueryTime.getText().toString())
+                        ||StringUtils.isEmpty(etEndQueryTime.getText().toString())){
+                    ToastUtils.showLong("填写数据不得为空!");
+                    return;
+                }
+
                 //点击确认按钮,回调数据
                 ScheduleQueryBean queryBean =  new ScheduleQueryBean(etTitleView.getText().toString(),
                         etLocaleView.getText().toString(),

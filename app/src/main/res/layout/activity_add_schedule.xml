@@ -10,18 +10,20 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <TextView
+        <ImageView
             android:id="@+id/bt_add_return"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/selected_detail_retreat_black"
             android:layout_marginLeft="16dp"
-            android:text="返回"
             android:layout_marginStart="16dp" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
             android:gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
             android:layout_height="wrap_content"
             android:text="新建日程" />
 
@@ -29,10 +31,15 @@
             android:id="@+id/tv_add_confirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="16sp"
             android:layout_marginRight="16dp"
             android:text="确认"
             android:layout_marginEnd="16dp" />
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_eeeeee"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,7 +50,7 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/ic_launcher_background"/>
+            android:src="@drawable/user_nickname"/>
 
         <EditText
             android:id="@+id/et_title_view"
@@ -63,7 +70,7 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/ic_launcher_background"/>
+            android:src="@drawable/dynamic_ip_icon"/>
 
         <EditText
             android:id="@+id/et_locale_view"
@@ -84,22 +91,24 @@
             android:id="@+id/iv_start_query"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/ic_launcher_background"/>
+            android:src="@drawable/friend_production_time_icon"/>
 
         <TextView
             android:id="@+id/et_start_query_time"
             android:layout_width="0dp"
+            android:paddingLeft="3dp"
             android:layout_weight="1"
+            android:gravity="start|center"
             android:background="@drawable/bg_query_edit"
             android:layout_marginHorizontal="3dp"
             android:layout_height="match_parent"
-            android:hint="开始时间"/>
+            android:text="开始时间"/>
 
         <ImageView
             android:id="@+id/iv_start_query_image"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/ic_launcher_background"/>
+            android:src="@drawable/friend_dynamic_create_icon"/>
     </LinearLayout>
 
     <LinearLayout
@@ -112,29 +121,33 @@
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/ic_launcher_background"/>
+            android:src="@drawable/friend_production_time_icon"/>
 
         <TextView
             android:id="@+id/et_end_query_time"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:paddingLeft="3dp"
+            android:gravity="start|center"
             android:layout_marginHorizontal="3dp"
             android:background="@drawable/bg_query_edit"
             android:layout_height="match_parent"
-            android:hint="结束时间"/>
+            android:text="结束时间"/>
 
         <ImageView
             android:id="@+id/iv_end_query_image"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/ic_launcher_background"/>
+            android:src="@drawable/friend_dynamic_create_icon"/>
     </LinearLayout>
 
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:gravity="start"
+        android:paddingLeft="3dp"
+        android:paddingTop="3dp"
         android:background="@drawable/bg_query_edit"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
@@ -146,6 +159,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_btn_cancel"
         android:layout_gravity="center_horizontal"
         android:text="取消"/>
 

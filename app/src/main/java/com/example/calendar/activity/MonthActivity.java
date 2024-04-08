@@ -17,6 +17,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,7 +66,7 @@ public class MonthActivity<activity_month> extends BaseActivity {
     private TextView tv_result;
     private TextView tv_data;
     private TextView tv_desc;
-    private TextView ivScheduleAdd;
+    private ImageView ivScheduleAdd;
 
     private FrameLayout flActivityMonthQuery;
 

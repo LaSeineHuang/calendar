@@ -1,4 +1,4 @@
-package Main.cumulativeDATA;
+package com.example.calendar.activity.cumulativeDATA;
 
 class Year{
     int year;
@@ -6,8 +6,11 @@ class Year{
     int cumulativeYear;
     int cumulativeMonth;
     int jiyue;
+
+    int  liyuan;//后面删掉吧
     int cumulativeYu;
     int isRunMonth;
+
     Year(int year,int month,int cumulativeYear,int jiyue,int cumulativeYu){
         this.year=year;
         this.month=month;
@@ -20,8 +23,10 @@ class Year{
             this.isRunMonth=0;
         }
     }
-    public void setCumulativeMonth1(int liYuanJiyue) {
-        this.cumulativeMonth = this.jiyue-liYuanJiyue;
+    public void setCumulativeMonth1(int liYuanJiyue,int liyuan) {
+
+        this.cumulativeMonth = this.jiyue - liYuanJiyue;
+        this.liyuan =liyuan ;
     }
 
     public void setCumulativeMonth2(int cumulativeMonth) {
@@ -30,9 +35,9 @@ class Year{
 
     public static void toString(Year years) {
         if (years.isRunMonth == 1) {
-            System.out.println(years.year + "年" + years.month + "闰月：积年：" + years.cumulativeYear + "积月1：" + years.jiyue +"积月2："+years.cumulativeMonth+"算余："+ years.cumulativeYu);
+            System.out.println(years.year + "年" + years.month + "闰月：积年：" + years.cumulativeYear + "积月1：" + years.jiyue +"积月2："+years.cumulativeMonth+"算余："+ years.cumulativeYu+"历元"+years.liyuan);
         } else {
-            System.out.println(years.year + "年" + years.month + "月：积年：" + years.cumulativeYear + "积月1：" + years.jiyue+"积月2："+years.cumulativeMonth + "算余：" + years.cumulativeYu);
+            System.out.println(years.year + "年" + years.month + "月：积年：" + years.cumulativeYear + "积月1：" + years.jiyue+"积月2："+years.cumulativeMonth + "算余：" + years.cumulativeYu+"历元"+years.liyuan);
         }
 
     }

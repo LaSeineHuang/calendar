@@ -9,22 +9,31 @@
     <TextView
         android:id="@+id/tv_item_current_one"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:background="@drawable/text_rounded_corners"
+        android:gravity="center_vertical"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         tools:text="藏历月" />
 
     <TextView
         android:id="@+id/tv_item_current_two"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_height="match_parent"
         android:layout_weight="1"
+        android:paddingLeft="5dp"
+        android:background="@drawable/text_rounded_corners"
         tools:text="积月" />
 
     <TextView
         android:id="@+id/tv_item_current_three"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_height="match_parent"
         android:layout_weight="1"
+        android:paddingLeft="5dp"
+        android:background="@drawable/text_rounded_corners"
         tools:text="算余" />
 
 </LinearLayout>

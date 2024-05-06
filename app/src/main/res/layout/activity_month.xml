@@ -22,7 +22,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/YearView"
+                android:id="@+id/yearView"
                 android:textColor="@color/white"
                 android:background="@drawable/bg_fs_first_rank_vote_num"
                 android:layout_width="wrap_content"

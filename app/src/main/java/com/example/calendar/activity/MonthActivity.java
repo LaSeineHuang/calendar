@@ -72,7 +72,7 @@ public class MonthActivity<activity_month> extends BaseActivity {
 
     private TextView tv_zang;//显示藏历
 
-    private Button searchButton,btSchedule,btMonthView;
+    private Button searchButton,btSchedule,btMonthView,yearView;
 
     private NestedScrollView svActivityMonthView;
 
@@ -103,6 +103,8 @@ public class MonthActivity<activity_month> extends BaseActivity {
         wbActivityMonthView = findViewById(R.id.wb_activity_month_view);
         flActivityMonthQuery = findViewById(R.id.fl_activity_month_query);
         ivScheduleAdd = findViewById(R.id.iv_schedule_add);
+        yearView = findViewById(R.id.yearView);
+
 
 
         List<String> pointList = Arrays.asList("2018-10-01", "2018-11-19", "2018-11-20", "2018-05-23", "2019-01-01", "2018-12-23");
@@ -157,7 +159,8 @@ public class MonthActivity<activity_month> extends BaseActivity {
 
                 Log.e(TAG, "baseCalendar::" + baseCalendar);
                 TingYear tingYear = Cumulative.mainCumulative(year,month);
-                tv_zang.setText("藏历："+tingYear.getYear() + "年" + tingYear.getMonth() + "月" );
+//                tv_zang.setText("藏历："+tingYear.getYear() + "年" + tingYear.getMonth() + "月" );
+                tv_zang.setText("藏历一月十三日");
                 if (localDate != null) {
                     CalendarDate calendarDate = CalendarUtil.getCalendarDate(localDate);
                     Lunar lunar = calendarDate.lunar;
@@ -216,6 +219,14 @@ public class MonthActivity<activity_month> extends BaseActivity {
                 //跳转到添加日程界面
                 Intent intent = new Intent(MonthActivity.this,AddScheduleActivity.class);
                 MonthActivity.this.startActivityForResult(intent,10001);
+            }
+        });
+        //点击年
+        yearView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MonthActivity.this,DataDisplayActivity.class);
+                startActivity(intent);
             }
         });
     }

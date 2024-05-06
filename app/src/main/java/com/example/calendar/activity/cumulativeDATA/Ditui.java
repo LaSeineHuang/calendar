@@ -8,11 +8,11 @@ public class Ditui {
         int month=3;
         int yu=0;
         int jiyue=0,suanyu=0;
-        Year[] [] years= new Year[3000][13];
+        int BCyear;
+        Year[] [] years= new Year[5000][13];
         years[year][month]=new Year(year,month,0,jiyue,suanyu);
-        System.out.println(year+"年"+month+"月：积年："+(year-1987)+"积月："+jiyue+"算余："+suanyu);
         //向前递推
-        while(year>0){
+        while(year>-500){
             while (month >1){
                 month--;
                 yu = (yu+2)%67;
@@ -23,26 +23,45 @@ public class Ditui {
                 }else{
                     suanyu = 0;
                 }
-                //toString(year, month, 60+(year - 1987)%60, jiyue, suanyu);
-                years[year][month]=new Year(year,month,getCumulativeYear(year,month),jiyue,suanyu);
-                //toString1(years[year][month]);
+                if(year<0)
+                {
+                    BCyear=year+4500;
+                    years[BCyear][month]=new Year(year,month,getCumulativeYear(year,month),jiyue,suanyu);
+                }else{
+                    years[year][month]=new Year(year,month,getCumulativeYear(year,month),jiyue,suanyu);
+                }
+
 //1yue
                 if(suanyu==52||suanyu==53){
-                    System.out.println("前一个月是闰月！！！");
+                    //  System.out.println("前一个月是闰月！！！");
                     yu = yu+2;
                     jiyue--;
                     suanyu = ((67-yu) % 67);
-                    //toRUNString(year, month-1,60+ (year - 1987)%60, jiyue, suanyu);
                     if(month!=1)
                     {
-                        years[year][0]=new Year(year,month-1,getCumulativeYear(year,month),jiyue,suanyu);
+                        if(year<0)
+                        {
+                            BCyear=year+4500;
+                            years[BCyear][0]=new Year(year,month-1,getCumulativeYear(year,month),jiyue,suanyu);
+
+                        }else{
+                            years[year][0]=new Year(year,month-1,getCumulativeYear(year,month),jiyue,suanyu);
+                        }
+
                     }else {
-                        years[year-1][0]=new Year(year-1,12,getCumulativeYear(year,month),jiyue,suanyu);
+                        if(year<0)
+                        {
+                            BCyear=year-1+4500;
+                            years[BCyear][0]=new Year(year-1,12,getCumulativeYear(year,month),jiyue,suanyu);
+                        }else{
+                            years[year-1][0]=new Year(year-1,12,getCumulativeYear(year,month),jiyue,suanyu);
+                        }
                     }
 
-                    //toString1(years[year][12]);
+
                 }
             }
+
             month=13;
             year--;
             if(year==0){
@@ -56,36 +75,54 @@ public class Ditui {
         month=3;
         yu=0;
         jiyue=0;
-        while(year<2108) {
+        while(year<3000) {
             while (month < 12){
                 month++;
                 yu = yu + 2;
                 jiyue++;
                 suanyu = yu % 67;
-                // toString(year, month, (year - 1987), jiyue, suanyu);
                 years[year][month]=new Year(year,month,getCumulativeYear(year,month),jiyue,suanyu);
-                // toString1(years[year][month]);
                 if(suanyu==48||suanyu==49){
-                    System.out.println("有闰月！！！");
                     yu = yu + 2;
                     jiyue++;
                     suanyu = yu % 67;
-                    // toRUNString(year, month, (year - 1987), jiyue, suanyu);
                     years[year][0]=new Year(year,month,getCumulativeYear(year,month),jiyue,suanyu);
-                    // toString1(years[year][month]);
                 }
             }
             month=0;
             year++;
         }
         int Liyuan;
-        for(int i=8;i<2100;i++){
+        int y;
+        for(int i=-472;i<3000;i++){
             for(int j=1;j<13;j++){
-                Liyuan=getLiyuan(years[i][j].year,years[i][j].month);
-                years[i][j].setCumulativeMonth1(years[Liyuan][3].jiyue,Liyuan);
-                years[i][j].toString(years[i][j]);
-                if(years[i][j].cumulativeYu==48||years[i][j].cumulativeYu==49){
-                    years[i][0].toString(years[i][0]);
+                if(i<0){
+                    y=i+4500;
+                }else if(i==0){
+                    continue;
+                }else{
+                    y=i;
+                }
+                Liyuan=getLiyuan(years[y][j].year,years[y][j].month);
+                if(Liyuan<0){
+                    Liyuan=+Liyuan+4500;
+                    years[y][j].setCumulativeMonth1(years[Liyuan][3].jiyue,Liyuan-4500);
+                }else{
+                    Liyuan=Liyuan;
+                    years[y][j].setCumulativeMonth1(years[Liyuan][3].jiyue,Liyuan);
+                }
+
+                years[y][j].toString(years[y][j]);
+                if(years[y][j].cumulativeYu==48||years[y][j].cumulativeYu==49){
+                    Liyuan=getLiyuan(years[y][0].year,years[y][0].month);
+                    if(Liyuan<0){
+                        Liyuan=Liyuan+4500;
+                        years[y][0].setCumulativeMonth1(years[Liyuan][3].jiyue,Liyuan-4500);
+                    }else{
+                        Liyuan=Liyuan;
+                        years[y][0].setCumulativeMonth1(years[Liyuan][3].jiyue,Liyuan);
+                    }
+                    years[y][0].toString(years[y][0]);
                 }
             }
         }
@@ -142,5 +179,6 @@ public class Ditui {
         }
 
     }
+
 
 }

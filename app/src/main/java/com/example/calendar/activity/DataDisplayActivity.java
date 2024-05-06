@@ -5,9 +5,15 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.example.calendar.R;
+import com.example.calendar.activity.Bean.DataDisplayOne;
+import com.example.calendar.activity.Bean.DataDisplayTwo;
 import com.example.calendar.activity.adapter.CurrentSurplusAdapter;
 import com.example.calendar.activity.adapter.DataDisplayAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 当日藏历天文数据界面
@@ -22,16 +28,20 @@ public class DataDisplayActivity extends AppCompatActivity {
 
         initView();
         initData();
+
+    }
+
+    private void initView(){
         //当前的界面的布局整体为一个RecyclerView
         rvActivityDataView =  findViewById(R.id.rv_activity_data_view);
     }
 
-    private void initView(){
-        rvActivityDataView.setAdapter(adapter);
-    }
-
     private void initData(){
+        List<MultiItemEntity> data =  new ArrayList<>();
+        data.add( new DataDisplayOne());
+        data.add( new DataDisplayTwo());
         //这里填写数据
-        // adapter = new DataDisplayAdapter();
+         adapter = new DataDisplayAdapter(data);
+        rvActivityDataView.setAdapter(adapter);
     }
 }

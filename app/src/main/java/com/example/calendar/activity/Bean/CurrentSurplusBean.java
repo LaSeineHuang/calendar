@@ -6,6 +6,15 @@ import java.io.Serializable;
  * 当前算余积月对应的Item的Bean
  */
 public class CurrentSurplusBean implements Serializable {
+
+    public CurrentSurplusBean() {
+    }
+    public CurrentSurplusBean(String oneContent, String twoContent, String threeContent) {
+        this.oneContent = oneContent;
+        this.twoContent = twoContent;
+        this.threeContent = threeContent;
+    }
+
     private String oneContent = "";
 
     private String twoContent = "";

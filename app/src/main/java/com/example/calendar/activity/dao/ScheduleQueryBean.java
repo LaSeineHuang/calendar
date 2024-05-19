@@ -1,11 +1,17 @@
-package com.example.calendar.activity.Bean;
+package com.example.calendar.activity.dao;
+
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
 
 import java.io.Serializable;
+import org.greenrobot.greendao.annotation.Generated;
 
 /**
  * 日程查询结果对应的Bean
  */
-public class ScheduleQueryBean implements Serializable {
+
+@Entity
+public class ScheduleQueryBean  {
     public ScheduleQueryBean(){
 
     }
@@ -15,6 +21,17 @@ public class ScheduleQueryBean implements Serializable {
         this.startTime = startTime;
         this.endTime = endTime;
     }
+    @Generated(hash = 1483788621)
+    public ScheduleQueryBean(Long id, String title, String location, String startTime, String endTime) {
+        this.id = id;
+        this.title = title;
+        this.location = location;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
+    @Id(autoincrement = true)//自增ID
+    private Long id;
 
     private String title = "";//标题
 
@@ -54,5 +71,13 @@ public class ScheduleQueryBean implements Serializable {
 
     public void setEndTime(String endTime) {
         this.endTime = endTime;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

@@ -18,24 +18,22 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.calendar.R;
-import com.example.calendar.activity.Bean.ScheduleQueryBean;
+import com.example.calendar.activity.dao.ScheduleQueryBean;
 import com.example.calendar.activity.adapter.ScheduleQueryResultsAdapter;
 import com.example.calendar.activity.cumulativeDATA.Cumulative;
 import com.example.calendar.activity.cumulativeDATA.TingYear;
+import com.example.calendar.activity.dao.StudentDaoOpen;
 import com.example.calendar.activity.dialog.DialogUtils;
 import com.example.calendar.activity.dialog.IConfirmAndCancelCallBack;
 import com.necer.calendar.BaseCalendar;
 import com.necer.calendar.HuangCalendar;
-import com.necer.calendar.Miui10Calendar;
 import com.necer.entity.CalendarDate;
 import com.necer.entity.Lunar;
 import com.necer.enumeration.DateChangeBehavior;
@@ -233,9 +231,12 @@ public class MonthActivity<activity_month> extends BaseActivity {
     private void initData(){
 
         //这里目前设置的查询的假数据
-        listData.add(new ScheduleQueryBean("数据1","北京","1111","11111"));
-        listData.add(new ScheduleQueryBean("数据2","上海","1111","11111"));
-        listData.add(new ScheduleQueryBean("数据3","广州","1111","11111"));
+//        listData.add(new ScheduleQueryBean("数据1","北京","1111","11111"));
+//        listData.add(new ScheduleQueryBean("数据2","上海","1111","11111"));
+//        listData.add(new ScheduleQueryBean("数据3","广州","1111","11111"));
+        List<ScheduleQueryBean> students = StudentDaoOpen.queryAll(MonthActivity.this);
+        listData.clear();
+        listData.addAll(students);
         //这里填写数据
         adapter = new ScheduleQueryResultsAdapter(listData);
         rvActivityMonthQuery.setAdapter(adapter);
@@ -313,8 +314,10 @@ public class MonthActivity<activity_month> extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 10001 && resultCode == RESULT_OK && data!= null){
             //这里是添加日程返回来的数据
-            ScheduleQueryBean bean = (ScheduleQueryBean) data.getSerializableExtra(ADD_SCHEDULE_BEAN_KEY);
-            adapter.addData(bean);
+//            ScheduleQueryBean bean = (ScheduleQueryBean) data.getSerializableExtra(ADD_SCHEDULE_BEAN_KEY);
+//            adapter.addData(bean);
+            List<ScheduleQueryBean> students = StudentDaoOpen.queryAll(MonthActivity.this);
+            adapter.setNewInstance(students);
         }
     }
 }

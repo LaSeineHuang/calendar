@@ -7,9 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.example.calendar.R;
-import com.example.calendar.activity.Bean.DataDisplayOne;
-import com.example.calendar.activity.Bean.DataDisplayTwo;
-import com.example.calendar.activity.adapter.CurrentSurplusAdapter;
+import com.example.calendar.activity.bean.DataDisplayOne;
+import com.example.calendar.activity.bean.DataDisplayTwo;
 import com.example.calendar.activity.adapter.DataDisplayAdapter;
 
 import java.util.ArrayList;

@@ -5,7 +5,7 @@ import androidx.annotation.NonNull;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.calendar.R;
-import com.example.calendar.activity.Bean.CurrentSurplusBean;
+import com.example.calendar.activity.bean.CurrentSurplusBean;
 
 import java.util.List;
 

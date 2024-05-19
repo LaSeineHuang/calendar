@@ -1,14 +1,13 @@
 package com.example.calendar.activity;
 
 import android.os.Bundle;
-import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.calendar.R;
-import com.example.calendar.activity.Bean.CurrentSurplusBean;
+import com.example.calendar.activity.bean.CurrentSurplusBean;
 import com.example.calendar.activity.adapter.CurrentSurplusAdapter;
-import com.example.calendar.activity.adapter.ScheduleQueryResultsAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

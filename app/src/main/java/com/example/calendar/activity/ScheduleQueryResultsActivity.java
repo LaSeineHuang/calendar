@@ -2,7 +2,6 @@ package com.example.calendar.activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -10,8 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.calendar.R;
-import com.example.calendar.activity.Bean.ScheduleQueryBean;
+import com.example.calendar.activity.dao.ScheduleQueryBean;
 import com.example.calendar.activity.adapter.ScheduleQueryResultsAdapter;
+import com.example.calendar.activity.dao.StudentDaoOpen;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,9 +54,12 @@ public class ScheduleQueryResultsActivity extends AppCompatActivity {
     private void initData(){
         String qString = getIntent().getStringExtra(QUERY_RESULT_KEY);//传递过来的数据查询条件
         //目前填写一些假数据
-        listData.add(new ScheduleQueryBean("数据1","北京","1111","11111"));
-        listData.add(new ScheduleQueryBean("数据2","上海","1111","11111"));
-        listData.add(new ScheduleQueryBean("数据3","广州","1111","11111"));
+//        listData.add(new ScheduleQueryBean("数据1","北京","1111","11111"));
+//        listData.add(new ScheduleQueryBean("数据2","上海","1111","11111"));
+//        listData.add(new ScheduleQueryBean("数据3","广州","1111","11111"));
+        List<ScheduleQueryBean> students = StudentDaoOpen.queryAll(ScheduleQueryResultsActivity.this);
+        listData.clear();
+        listData.addAll(students);
         //这里填写数据
          adapter = new ScheduleQueryResultsAdapter(listData);
         rvQueryResultsView.setAdapter(adapter);

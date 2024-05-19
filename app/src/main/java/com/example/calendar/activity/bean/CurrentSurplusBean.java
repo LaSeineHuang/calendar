@@ -1,4 +1,4 @@
-package com.example.calendar.activity.Bean;
+package com.example.calendar.activity.bean;
 
 import java.io.Serializable;
 

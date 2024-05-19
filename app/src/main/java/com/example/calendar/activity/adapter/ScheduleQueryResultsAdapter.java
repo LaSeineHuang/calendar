@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.calendar.R;
-import com.example.calendar.activity.Bean.ScheduleQueryBean;
+import com.example.calendar.activity.dao.ScheduleQueryBean;
 
 import java.util.List;
 

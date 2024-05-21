@@ -11,12 +11,17 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.blankj.utilcode.util.ThreadUtils;
 import com.example.calendar.R;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.ValueCallback;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * 星系的Webview
@@ -40,13 +45,45 @@ public class WebViewActivity extends AppCompatActivity {
 //        initJavaScriptInterface();
 
         mWebView.loadUrl(mHomeUrl);
-        mWebView.evaluateJavascript("javascript:json.property = 'value';", null);
+//        mWebView.evaluateJavascript("javascript:json.property = 'value';", null);
+        // 定义 JSON 数据
+        JSONObject jsonData = new JSONObject();
+        try {
+            jsonData.put("date", "2024.03.13");
+            jsonData.put("mercury", 19);
+            jsonData.put("venus", 122);
+            jsonData.put("mars", 121);
+            jsonData.put("jupiter", 12);
+            jsonData.put("saturn", 123);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        ThreadUtils.runOnUiThreadDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // 将 JSON 数据转换为字符串
+                String jsonString = jsonData.toString();
+
+                // 构建 JavaScript 代码，调用 setIsData 函数，并传入 JSON 数据
+                String jsCode = "javascript:setJSData(" + jsonString + ")";
+
+                mWebView.evaluateJavascript(jsCode, new ValueCallback<String>() {
+                    @Override
+                    public void onReceiveValue(String value) {
+                        Log.d(TAG, "receive:" + value);
+                        mWebView.reload();
+                    }
+                });
+            }
+        },2000);
+
+
     }
 
     //   基本的WebViewSetting
     public void initWebViewSettings() {
 
-        WebSettings webSetting =mWebView.getSettings();
+        WebSettings webSetting = mWebView.getSettings();
         webSetting.setJavaScriptEnabled(true);
         webSetting.setBuiltInZoomControls(true);
         webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
@@ -110,9 +147,6 @@ public class WebViewActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
 
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {

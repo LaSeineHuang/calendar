@@ -1,12 +1,20 @@
 package com.example.calendar.activity.adapter;
 
 
+import static com.blankj.utilcode.util.ActivityUtils.startActivity;
+
+import android.content.Intent;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.calendar.R;
+import com.example.calendar.activity.DataDisplayActivity;
+import com.example.calendar.activity.MonthActivity;
+import com.example.calendar.activity.WebViewActivity;
 
 import java.util.List;
 
@@ -30,6 +38,14 @@ public class DataDisplayAdapter  extends BaseMultiItemQuickAdapter<MultiItemEnti
 
                 break;
             case 2:
+                baseViewHolder.getView(R.id.tv_wu_yao_zhi).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //点击五曜值
+                        Intent intent = new Intent(getContext(), WebViewActivity.class);
+                        startActivity(intent);
+                    }
+                });
 
                 break;
 

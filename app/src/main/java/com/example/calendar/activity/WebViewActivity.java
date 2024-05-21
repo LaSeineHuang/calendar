@@ -50,11 +50,11 @@ public class WebViewActivity extends AppCompatActivity {
         JSONObject jsonData = new JSONObject();
         try {
             jsonData.put("date", "2024.03.13");
-            jsonData.put("mercury", 119);
-            jsonData.put("venus", 122);
-            jsonData.put("mars", 121);
-            jsonData.put("jupiter", 12);
-            jsonData.put("saturn", 123);
+            jsonData.put("mercury", 9);
+            jsonData.put("venus", 22);
+            jsonData.put("mars", 21);
+            jsonData.put("jupiter", 2);
+            jsonData.put("saturn", 23);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -66,6 +66,7 @@ public class WebViewActivity extends AppCompatActivity {
 
                 // 构建 JavaScript 代码，调用 setIsData 函数，并传入 JSON 数据
                 String jsCode = "javascript:setJSData(" + jsonString + ")";
+                Log.d(TAG, "receive:" + jsonString);
 
                 mWebView.evaluateJavascript(jsCode, new ValueCallback<String>() {
                     @Override

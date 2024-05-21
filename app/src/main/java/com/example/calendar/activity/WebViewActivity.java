@@ -50,7 +50,7 @@ public class WebViewActivity extends AppCompatActivity {
         JSONObject jsonData = new JSONObject();
         try {
             jsonData.put("date", "2024.03.13");
-            jsonData.put("mercury", 19);
+            jsonData.put("mercury", 119);
             jsonData.put("venus", 122);
             jsonData.put("mars", 121);
             jsonData.put("jupiter", 12);
@@ -71,11 +71,10 @@ public class WebViewActivity extends AppCompatActivity {
                     @Override
                     public void onReceiveValue(String value) {
                         Log.d(TAG, "receive:" + value);
-                        mWebView.reload();
                     }
                 });
             }
-        },2000);
+        },100);
 
 
     }

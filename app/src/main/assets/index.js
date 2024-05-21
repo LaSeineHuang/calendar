@@ -1,5 +1,12 @@
 function setJSData(data){
-  return JSON.parse(JSON.stringify(data))
+
+  const json =  JSON.parse(JSON.stringify(data))
+// 给定五个点的坐标，比如a的坐标是20，且在第一层
+placePoint(document.getElementById('pointA'), 1, json.mercury, layers);
+placePoint(document.getElementById('pointB'), 2, json.venus, layers);
+placePoint(document.getElementById('pointC'), 3, json.mars, layers);
+placePoint(document.getElementById('pointD'), 4, json.jupiter, layers);
+placePoint(document.getElementById('pointE'), 5, json.saturn, layers);
 }
 
 /*

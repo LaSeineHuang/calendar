@@ -52,4 +52,5 @@ dependencies {
     implementation 'com.blankj:utilcodex:1.30.6'
     //添加greendao相关依赖
     implementation 'org.greenrobot:greendao:3.3.0'
+    implementation 'com.tencent.tbs:tbssdk:44286'
 }

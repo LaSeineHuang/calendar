@@ -223,7 +223,7 @@ public class MonthActivity<activity_month> extends BaseActivity {
         yearView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MonthActivity.this,DataDisplayActivity.class);
+                Intent intent = new Intent(MonthActivity.this,WebViewActivity.class);
                 startActivity(intent);
             }
         });

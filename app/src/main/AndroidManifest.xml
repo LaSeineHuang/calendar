@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.calendar">
 
+    <!-- TBS基础权限需求 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_rules"
@@ -35,6 +38,12 @@
         <activity
             android:name="com.example.calendar.activity.ScheduleQueryResultsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name="com.example.calendar.activity.WebViewActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+
+        <service android:name=".activity.X5ProcessInitService" android:process=":web"
+            android:exported="false"/>
     </application>
 
 </manifest>

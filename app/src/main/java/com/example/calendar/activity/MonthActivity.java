@@ -156,14 +156,15 @@ public class MonthActivity<activity_month> extends BaseActivity {
                 Log.d(TAG, "   dateChangeBehavior " + dateChangeBehavior);
 
                 Log.e(TAG, "baseCalendar::" + baseCalendar);
-                TingYear tingYear = Cumulative.mainCumulative(year,month);
-//                tv_zang.setText("藏历："+tingYear.getYear() + "年" + tingYear.getMonth() + "月" );
-                tv_zang.setText("藏历一月十三日");
+
                 if (localDate != null) {
                     CalendarDate calendarDate = CalendarUtil.getCalendarDate(localDate);
                     Lunar lunar = calendarDate.lunar;
                     tv_data.setText(localDate.toString("yyyy年MM月dd日"));
                     tv_desc.setText(lunar.chineseEra + lunar.animals + "年" + lunar.lunarMonthStr + lunar.lunarDayStr);
+   //                 TingYear tingYear = Cumulative.mainCumulative(year,month);
+   //                 tv_zang.setText("藏历："+tingYear.getYear() + "年" + tingYear.getMonth() + "月" );
+                    tv_zang.setText("藏历"+ lunar.lunarMonthStr + lunar.lunarDayStr);
                 } else {
                     tv_data.setText("");
                     tv_desc.setText("");
@@ -224,6 +225,12 @@ public class MonthActivity<activity_month> extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MonthActivity.this,DataDisplayActivity.class);
+                // 获取当前选中的日期
+                LocalDate selectedDate = LocalDate.now();  // 假设使用今天的日期，根据实际情况调整获取方法
+
+                intent.putExtra("YEAR", selectedDate.getYear());
+                intent.putExtra("MONTH", selectedDate.getMonthOfYear());
+                intent.putExtra("DAY", selectedDate.getDayOfMonth());
                 startActivity(intent);
             }
         });

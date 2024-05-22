@@ -1,5 +1,8 @@
 package com.example.calendar.activity.cumulativeDATA;
 
+import com.necer.entity.CalendarDate;
+import com.necer.entity.Lunar;
+
 public class TingYear {
     int year;//key
     int month;//key

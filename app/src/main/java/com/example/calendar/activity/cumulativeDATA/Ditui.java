@@ -1,9 +1,8 @@
 package com.example.calendar.activity.cumulativeDATA;
 
-
+/*递推版积年积月*/
 public class Ditui {
     public static void mainCumulative(){
-        System.out.println((1026-1027)%60);
         int year=1987;
         int month=3;
         int yu=0;
@@ -94,7 +93,7 @@ public class Ditui {
         }
         int Liyuan;
         int y;
-        for(int i=-472;i<3000;i++){
+        for(int i=-472;i<1000;i++){
             for(int j=1;j<13;j++){
                 if(i<0){
                     y=i+4500;
@@ -160,25 +159,5 @@ public class Ditui {
         }
         return cumulativeYear;
     }
-
-
-    private static void toString(int year, int month, int jinian, int jiyue, int suanyu) {
-        if(month>2){
-            System.out.println(year + "年" + month + "月：积年：" + jinian%60 + "积月：" + jiyue+ "算余：" + suanyu);
-        }else{
-            System.out.println(year + "年" + month + "月：积年：" + (jinian-1)%60 + "积月：" + jiyue + "算余：" + suanyu);
-        }
-
-    }
-
-    private static void toRUNString(int year, int month, int jinian, int jiyue, int suanyu) {
-        if(month>2){
-            System.out.println(year + "年" + month + "闰月：积年：" + jinian%60 + "积月：" + jiyue+ "算余：" + suanyu);
-        }else{
-            System.out.println(year + "年" + month + "闰月：积年：" + (jinian-1)%60 + "积月：" + jiyue + "算余：" + suanyu);
-        }
-
-    }
-
 
 }

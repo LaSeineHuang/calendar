@@ -35,7 +35,6 @@ public class ScheduleQueryResultsActivity extends AppCompatActivity {
         initView();
         initListener();
         initData();
-
     }
     private void initView(){
         rvQueryResultsView =  findViewById(R.id.rv_query_results_view);

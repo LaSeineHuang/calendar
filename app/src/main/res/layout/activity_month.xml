@@ -27,7 +27,7 @@
                 android:background="@drawable/bg_fs_first_rank_vote_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="年" />
+                android:text="藏历数据" />
 
             <Button
                 android:id="@+id/bt_monthView"

@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <TextView
+        android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -57,13 +58,13 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="子/67"
+                android:text="子"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="子/707"
+                android:text="第六子"
                 android:gravity="center_vertical"
                 android:layout_weight="1.2"/>
         </LinearLayout>
@@ -79,36 +80,42 @@
                 android:gravity="center_vertical"
                 android:text="定曜"/>
             <TextView
+                android:id="@+id/certainCelestial1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="3"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/certainCelestial2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="37"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/certainCelestial3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="53"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/certainCelestial4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="5"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/certainCelestial5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="4"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/certainCelestial6"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="595"
@@ -128,36 +135,42 @@
                 android:gravity="center_vertical"
                 android:text="曜伴月宿"/>
             <TextView
+                android:id="@+id/cOfNetAndSun1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="26"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/cOfNetAndSun2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="4"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/cOfNetAndSun3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="13"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/cOfNetAndSun4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="0"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/cOfNetAndSun5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="8"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/cOfNetAndSun6"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="112"
@@ -176,30 +189,35 @@
                 android:gravity="center_vertical"
                 android:text="定日"/>
             <TextView
+                android:id="@+id/certainSun1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="25"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/certainSun2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="48"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/certainSun3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="6"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/certainSun4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="5"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/certainSun5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="13"
@@ -225,30 +243,35 @@
                 android:gravity="center_vertical"
                 android:text="会合"/>
             <TextView
+                android:id="@+id/meet1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="24"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/meet2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="52"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/meet3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="19"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/meet4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="5"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/meet5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="21"
@@ -257,9 +280,86 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="112"
+                android:text=""
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginVertical="1dp"
+        android:textSize="5sp"
+        android:textStyle="bold"
+        android:text=""/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/text_rounded_corners"
+        android:padding="1dp"
+        android:layout_marginHorizontal="10dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:gravity="center_vertical"
+                android:text="日期名:"/>
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="喜日"
+                android:gravity="center_vertical"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:gravity="center_vertical"
+                android:text="作用"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="前分:"
+                android:gravity="center_vertical"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/Fname"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="不净"
+                android:gravity="center_vertical"
+                android:layout_weight="1"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="后分:"
+                android:gravity="center_vertical"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/Lname"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="枝梢"
+                android:gravity="center_vertical"
+                android:layout_weight="1"/>
+
         </LinearLayout>
 
     </LinearLayout>
@@ -294,18 +394,21 @@
                 android:gravity="center_vertical"
                 android:text="五曜公积日"/>
             <TextView
+                android:id="@+id/surplusDay"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="739292"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/median"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="54"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/inferior"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="476"
@@ -363,12 +466,6 @@
                 android:text="金曜"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="日曜"
-                android:gravity="center_vertical"
-                android:layout_weight="1"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -377,41 +474,41 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/mars"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:gravity="center_vertical"
                 android:text="218"/>
             <TextView
+                android:id="@+id/jupiter"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="761"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/saturn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="9773"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/mercury"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="1787"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/venus"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="1436"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="6519314"
-                android:gravity="center_vertical"
-                android:layout_weight="1.2"/>
+
         </LinearLayout>
     </LinearLayout>
 
@@ -494,6 +591,7 @@
                 android:gravity="center_vertical"
                 android:text="火曜"/>
             <TextView
+                android:id="@+id/mars1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="21"
@@ -502,6 +600,7 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/mars2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="55"
@@ -510,6 +609,7 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/mars3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="48"
@@ -519,6 +619,7 @@
                 android:layout_weight="1"/>
 
             <TextView
+                android:id="@+id/mars4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -527,6 +628,7 @@
                 android:paddingLeft="2dp"
                 android:text="2" />
             <TextView
+                android:id="@+id/mars5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="190"
@@ -548,6 +650,7 @@
                 android:gravity="center_vertical"
                 android:text="木曜"/>
             <TextView
+                android:id="@+id/jupiter1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="2"
@@ -556,6 +659,7 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/jupiter2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="34"
@@ -564,6 +668,7 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/jupiter3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="49"
@@ -573,6 +678,7 @@
                 android:layout_weight="1"/>
 
             <TextView
+                android:id="@+id/jupiter4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -581,6 +687,7 @@
                 android:paddingLeft="2dp"
                 android:text="1" />
             <TextView
+                android:id="@+id/jupiter5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="65"
@@ -601,6 +708,7 @@
                 android:gravity="center_vertical"
                 android:text="土曜"/>
             <TextView
+                android:id="@+id/saturn1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="23"
@@ -609,6 +717,7 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/saturn2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="38"
@@ -617,6 +726,7 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/saturn3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="21"
@@ -625,6 +735,7 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/saturn4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="5"
@@ -633,6 +744,7 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/saturn5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="2587"
@@ -653,6 +765,7 @@
                 android:gravity="center_vertical"
                 android:text="水曜"/>
             <TextView
+                android:id="@+id/mercury1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="9"
@@ -661,6 +774,7 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/mercury2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="58"
@@ -669,6 +783,7 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/mercury3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="7"
@@ -677,6 +792,7 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/mercury4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="5"
@@ -685,6 +801,7 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/mercury5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="1981"
@@ -705,6 +822,7 @@
                 android:gravity="center_vertical"
                 android:text="金曜"/>
             <TextView
+                android:id="@+id/venus1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="22"
@@ -713,6 +831,7 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/venus2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="51"
@@ -721,6 +840,7 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/venus3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="16"
@@ -729,6 +849,7 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/venus4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="0"
@@ -737,61 +858,10 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/venus5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="456"
-                android:paddingLeft="2dp"
-                android:background="@drawable/text_rounded_corners_two"
-                android:gravity="center_vertical"
-                android:layout_weight="1.5"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/text_rounded_corners_two"
-                android:gravity="center_vertical"
-                android:text="日曜"/>
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="25"
-                android:paddingLeft="2dp"
-                android:background="@drawable/text_rounded_corners_two"
-                android:gravity="center_vertical"
-                android:layout_weight="1"/>
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="39"
-                android:paddingLeft="2dp"
-                android:background="@drawable/text_rounded_corners_two"
-                android:gravity="center_vertical"
-                android:layout_weight="1"/>
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="15"
-                android:paddingLeft="2dp"
-                android:background="@drawable/text_rounded_corners_two"
-                android:gravity="center_vertical"
-                android:layout_weight="1"/>
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="3"
-                android:paddingLeft="2dp"
-                android:background="@drawable/text_rounded_corners_two"
-                android:gravity="center_vertical"
-                android:layout_weight="1"/>
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:text="110643"
                 android:paddingLeft="2dp"
                 android:background="@drawable/text_rounded_corners_two"
                 android:gravity="center_vertical"

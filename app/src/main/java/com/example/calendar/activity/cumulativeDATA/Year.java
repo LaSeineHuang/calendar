@@ -22,6 +22,13 @@ class Year{
             this.isRunMonth=0;
         }
     }
+    public int getCumulativeMonth(){
+        return cumulativeMonth;
+    }
+
+    public int getCumulativeYu() {
+        return cumulativeYu;
+    }
 
     public void setLiyuan(int liyuan) {
         this.liyuan = liyuan;

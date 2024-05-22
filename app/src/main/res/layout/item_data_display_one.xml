@@ -18,6 +18,7 @@
         android:layout_height="300dp"
         android:src="@drawable/tu"/>
     <TextView
+        android:id="@+id/tv_month"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -86,30 +87,35 @@
                 android:gravity="center_vertical"
                 android:text="曜基数"/>
             <TextView
+                android:id="@+id/celestialBase1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="5"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/celestialBase2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="30"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/celestialBase3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="20"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/celestialBase4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="2"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/celestialBase5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="146"
@@ -129,6 +135,7 @@
                 android:gravity="center_vertical"
                 android:text="整数"/>
             <TextView
+                android:id="@+id/tv_integer"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="9"
@@ -148,6 +155,7 @@
                 android:gravity="center_vertical"
                 android:text="零数"/>
             <TextView
+                android:id="@+id/tv_zero"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="54"
@@ -167,30 +175,35 @@
                 android:gravity="center_vertical"
                 android:text="太阳基数"/>
             <TextView
+                android:id="@+id/sunBase1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="22"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/sunBase2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="34"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/sunBase3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="1"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/sunBase4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="4"
                 android:gravity="center_vertical"
                 android:layout_weight="1"/>
             <TextView
+                android:id="@+id/sunBase5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:text="50"

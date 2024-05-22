@@ -19,8 +19,8 @@ public class SurplusDay {
         return surplusDay;
     }
 
-    public void setMedian(int median) {
-        this.median = median;
+    public int getMedian() {
+        return median;
     }
 
     public int getInferior() {

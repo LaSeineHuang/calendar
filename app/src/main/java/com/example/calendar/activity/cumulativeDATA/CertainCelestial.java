@@ -95,12 +95,12 @@ public class CertainCelestial {
             int minMiddleCelestial;//中曜化到子位
             minMiddleCelestial=middleCelestial.celestia*60*60*6*707+middleCelestial.clepsydra*60*6*707+middleCelestial.minute*6*707+middleCelestial.breath*707+middleCelestial.sub;
             int minStepOfNet;//月步化到子位
-            minStepOfNet=stepOfNet.celestia*60*60*6*077+stepOfNet.clepsydra*60*6*707+stepOfNet.minute*6*707+stepOfNet.breath*707+stepOfNet.sub;
+            minStepOfNet=stepOfNet.celestia*60*60*6*707+stepOfNet.clepsydra*60*6*707+stepOfNet.minute*6*707+stepOfNet.breath*707+stepOfNet.sub;
             int minSemideterminsticCelestial;//半定曜化到子位
             if(minMiddleCelestial>=minMiddleCelestial){
-                minSemideterminsticCelestial=minStepOfNet-minMiddleCelestial;
+                minSemideterminsticCelestial=minMiddleCelestial-minStepOfNet;
             }else{
-                minSemideterminsticCelestial=minStepOfNet+27*60*60*6*67-minMiddleCelestial;
+                minSemideterminsticCelestial=minMiddleCelestial+27*60*60*6*67-minStepOfNet;
             }
             int businessOfsub=(minSemideterminsticCelestial)/707;  //子商
             int remainderOfsub=(minSemideterminsticCelestial)%707;  //子余

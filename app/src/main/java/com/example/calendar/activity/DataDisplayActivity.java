@@ -29,8 +29,8 @@ public class DataDisplayActivity extends AppCompatActivity {
     int month;
     int day;
 
-    DataDisplayOne DataDisplayOne;
-    DataDisplayTwo DataDisplayTwo;
+    DataDisplayOne dataDisplayOne= new DataDisplayOne();
+    DataDisplayTwo dataDisplayTwo=new DataDisplayTwo();
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -56,12 +56,29 @@ public class DataDisplayActivity extends AppCompatActivity {
 
     private void initData(){
         BeanTest beanTest= MainCumulative.cumulative(year,month,day);
-        DataDisplayOne.setDATA(year,month,day);
+        dataDisplayOne.setDate(beanTest.getYear(),beanTest.getMonth(),beanTest.getDay());
+        dataDisplayOne.setData(beanTest.getCumulativeMonth(), beanTest.getCumulativeYu(),beanTest.getInteger(), beanTest.getZero());
+        dataDisplayOne.setCelestialBase(beanTest.celestialBase1, beanTest.celestialBase2, beanTest.celestialBase3, beanTest.celestialBase4, beanTest.celestialBase5 );
+        dataDisplayOne.setSunBase(beanTest.sunBase1,beanTest.sunBase2,beanTest.sunBase3,beanTest.sunBase4,beanTest.sunBase5);
+
+        dataDisplayTwo.setDate(beanTest.getYear(),beanTest.getMonth(),beanTest.getDay());
+        dataDisplayTwo.setCertainCelestial(beanTest.certainCelestial1,beanTest.certainCelestial2,beanTest.certainCelestial3, beanTest.certainCelestial4, beanTest.certainCelestial5,beanTest.certainCelestial6);
+        dataDisplayTwo.setCOfNetAndSun(beanTest.cOfNetAndSun1, beanTest.cOfNetAndSun2, beanTest.cOfNetAndSun3, beanTest.cOfNetAndSun4, beanTest.cOfNetAndSun5, beanTest.cOfNetAndSun6);
+        dataDisplayTwo.setCertainSun(beanTest.certainSun1, beanTest.certainSun2, beanTest.certainSun3, beanTest.certainSun4, beanTest.certainSun5);
+        dataDisplayTwo.setMeet(beanTest.meet1, beanTest.meet2, beanTest.meet3, beanTest.meet4, beanTest.meet5);
+        dataDisplayTwo.setName(beanTest.name, beanTest.Fname, beanTest.Lname);
+        dataDisplayTwo.setSurplusDay(beanTest.surplusDay,beanTest.median, beanTest.inferior);
+        dataDisplayTwo.setSpecialDay(beanTest.mars,beanTest.jupiter,beanTest.saturn,beanTest.mercury, beanTest.venus);
+        dataDisplayTwo.setMars(beanTest.mars1, beanTest.mars2, beanTest.mars3, beanTest.mars4, beanTest.mars5);
+        dataDisplayTwo.setJupiter(beanTest.jupiter1, beanTest.jupiter2, beanTest.jupiter3, beanTest.jupiter4, beanTest.jupiter5);
+        dataDisplayTwo.setSaturn(beanTest.saturn1, beanTest.saturn2, beanTest.saturn3, beanTest.saturn4, beanTest.saturn5);
+        dataDisplayTwo.setMercury(beanTest.mercury1, beanTest.mercury2, beanTest.mercury3, beanTest.mercury4, beanTest.mercury5);
+        dataDisplayTwo.setVenus(beanTest.venus1, beanTest.venus2, beanTest.venus3, beanTest.venus4, beanTest.venus5);
         List<MultiItemEntity> data =  new ArrayList<>();
-        data.add(DataDisplayOne);
-        data.add(DataDisplayTwo);
+        data.add(dataDisplayOne);
+        data.add(dataDisplayTwo);
         //这里填写数据
-         adapter = new DataDisplayAdapter(data);
+        adapter = new DataDisplayAdapter(data);
         rvActivityDataView.setAdapter(adapter);
     }
 }

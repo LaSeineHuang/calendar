@@ -93,7 +93,7 @@ public class Ditui {
         }
         int Liyuan;
         int y;
-        for(int i=-472;i<1000;i++){
+        for(int i=-472;i<3000;i++){
             for(int j=1;j<13;j++){
                 if(i<0){
                     y=i+4500;
@@ -111,7 +111,7 @@ public class Ditui {
                     years[y][j].setCumulativeMonth1(years[Liyuan][3].jiyue,Liyuan);
                 }
 
-                years[y][j].toString(years[y][j]);
+              //  years[y][j].toString(years[y][j]);
                 if(years[y][j].cumulativeYu==48||years[y][j].cumulativeYu==49){
                     Liyuan=getLiyuan(years[y][0].year,years[y][0].month);
                     if(Liyuan<0){
@@ -121,7 +121,7 @@ public class Ditui {
                         Liyuan=Liyuan;
                         years[y][0].setCumulativeMonth1(years[Liyuan][3].jiyue,Liyuan);
                     }
-                    years[y][0].toString(years[y][0]);
+                   // years[y][0].toString(years[y][0]);
                 }
             }
         }

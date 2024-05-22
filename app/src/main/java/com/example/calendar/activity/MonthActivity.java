@@ -148,10 +148,12 @@ public class MonthActivity<activity_month> extends BaseActivity {
         innerPainter.setLegalHolidayList(holidayList, workdayList);
     }
     private void initListener(){
+        final LocalDate[] selectedDate = {new LocalDate()};
         miui10Calendar.setOnCalendarChangedListener(new OnCalendarChangedListener() {
             @Override
             public void onCalendarChange(BaseCalendar baseCalendar, int year, int month, LocalDate localDate, DateChangeBehavior dateChangeBehavior) {
                 tv_result.setText(year + "年" + month + "月" + "   当前页面选中 " + localDate);
+                selectedDate[0] =localDate;
                 Log.d(TAG, "   当前页面选中 " + localDate);
                 Log.d(TAG, "   dateChangeBehavior " + dateChangeBehavior);
 
@@ -165,6 +167,7 @@ public class MonthActivity<activity_month> extends BaseActivity {
    //                 TingYear tingYear = Cumulative.mainCumulative(year,month);
    //                 tv_zang.setText("藏历："+tingYear.getYear() + "年" + tingYear.getMonth() + "月" );
                     tv_zang.setText("藏历"+ lunar.lunarMonthStr + lunar.lunarDayStr);
+
                 } else {
                     tv_data.setText("");
                     tv_desc.setText("");
@@ -226,11 +229,10 @@ public class MonthActivity<activity_month> extends BaseActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MonthActivity.this,DataDisplayActivity.class);
                 // 获取当前选中的日期
-                LocalDate selectedDate = LocalDate.now();  // 假设使用今天的日期，根据实际情况调整获取方法
-
-                intent.putExtra("YEAR", selectedDate.getYear());
-                intent.putExtra("MONTH", selectedDate.getMonthOfYear());
-                intent.putExtra("DAY", selectedDate.getDayOfMonth());
+                Log.d(TAG, "   当前页面选中 " + selectedDate[0]);
+                intent.putExtra("YEAR", selectedDate[0].getYear());
+                intent.putExtra("MONTH", selectedDate[0].getMonthOfYear());
+                intent.putExtra("DAY", selectedDate[0].getDayOfMonth());
                 startActivity(intent);
             }
         });

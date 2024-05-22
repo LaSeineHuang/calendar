@@ -2,7 +2,7 @@ package com.example.calendar.activity.cumulativeDATA;
 
 /*递推版积年积月*/
 public class Ditui {
-    public static void mainCumulative(){
+    public static Year mainCumulative(int Y,int M){
         int year=1987;
         int month=3;
         int yu=0;
@@ -125,6 +125,8 @@ public class Ditui {
                 }
             }
         }
+
+        return years[Y][M];
     }
 
     public static int getLiyuan(int year,int month) {
@@ -141,6 +143,7 @@ public class Ditui {
             return liyuan;
         }
     }
+
 
     public static int getCumulativeYear(int year,int month){
         int cumulativeYear;

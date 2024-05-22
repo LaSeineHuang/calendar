@@ -5,6 +5,7 @@ import static com.blankj.utilcode.util.ActivityUtils.startActivity;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -15,6 +16,8 @@ import com.example.calendar.R;
 import com.example.calendar.activity.DataDisplayActivity;
 import com.example.calendar.activity.MonthActivity;
 import com.example.calendar.activity.WebViewActivity;
+import com.example.calendar.activity.bean.DataDisplayOne;
+import com.example.calendar.activity.bean.DataDisplayTwo;
 
 import java.util.List;
 
@@ -35,9 +38,11 @@ public class DataDisplayAdapter  extends BaseMultiItemQuickAdapter<MultiItemEnti
 
         switch (multiItemEntity.getItemType()) {
             case 1:
-
+                DataDisplayOne dataDisplayOne = (DataDisplayOne)multiItemEntity;
+                baseViewHolder.<TextView>getView(R.id.tv_data).setText(dataDisplayOne.getDATA());
                 break;
             case 2:
+                DataDisplayTwo dataDisplayTwo = (DataDisplayTwo)multiItemEntity;
                 baseViewHolder.getView(R.id.tv_wu_yao_zhi).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

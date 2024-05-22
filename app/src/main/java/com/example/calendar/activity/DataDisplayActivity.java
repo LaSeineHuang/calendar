@@ -9,9 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.example.calendar.R;
+import com.example.calendar.activity.bean.BeanTest;
 import com.example.calendar.activity.bean.DataDisplayOne;
 import com.example.calendar.activity.bean.DataDisplayTwo;
 import com.example.calendar.activity.adapter.DataDisplayAdapter;
+import com.example.calendar.activity.cumulativeDATA.MainCumulative;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +25,12 @@ public class DataDisplayActivity extends AppCompatActivity {
     private RecyclerView rvActivityDataView;
     private DataDisplayAdapter adapter;
     private TextView dateTextView;
+    int year;
+    int month;
+    int day;
 
+    DataDisplayOne DataDisplayOne;
+    DataDisplayTwo DataDisplayTwo;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -31,15 +38,12 @@ public class DataDisplayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_data_display);
         // 从Intent中获取年月日
         Intent intent = getIntent();
-        int year = intent.getIntExtra("YEAR", -1); // 默认值为-1表示没有数据
-        int month = intent.getIntExtra("MONTH", -1);
-        int day = intent.getIntExtra("DAY", -1);
+        year = intent.getIntExtra("YEAR", -1); // 默认值为-1表示没有数据
+        month = intent.getIntExtra("MONTH", -1);
+        day = intent.getIntExtra("DAY", -1);
         // 使用这些数据来初始化界面或做其他操作
 
         initView();
-        if (dateTextView != null) {
-            dateTextView.setText(year + "年" + month + "月" + day + "日");
-        }
         initData();
 
     }
@@ -51,9 +55,11 @@ public class DataDisplayActivity extends AppCompatActivity {
     }
 
     private void initData(){
+        BeanTest beanTest= MainCumulative.cumulative(year,month,day);
+        DataDisplayOne.setDATA(year,month,day);
         List<MultiItemEntity> data =  new ArrayList<>();
-        data.add( new DataDisplayOne());
-        data.add( new DataDisplayTwo());
+        data.add(DataDisplayOne);
+        data.add(DataDisplayTwo);
         //这里填写数据
          adapter = new DataDisplayAdapter(data);
         rvActivityDataView.setAdapter(adapter);

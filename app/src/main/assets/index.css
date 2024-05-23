@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  font-size: 40px;
+}
+
+#disk-container {
+  position: relative;
+  width: 926px;
+  height: 1000px;
+  /*width: 1200px;*/
+  /*height: 1200px;*/
+  margin: 100px auto 40px;
+  /*background: url('bg.jpg') no-repeat top center / 100% auto;*/
+  background-size: 100% 100%;
+  overflow: hidden;
+}
+
+.inner{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* 360 / 27 * 2 = 26.67 */
+  /* 360 / 28 * 2 = 25.71 */
+  transform: rotate(26.67deg);
+}
+
+.earth{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  background: url('img/earth.png') no-repeat top center / 100% auto;
+  background-size: 100% 100%;
+}
+
+.disk-layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 1px solid black;
+  box-sizing: border-box;
+  transform: translate(-50%, -50%);
+}
+.point {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: red;
+}
+
+#pointA{
+  background: url('img/shui.png') no-repeat top center / 100% auto;
+  background-size: 100% 100%;
+}
+#pointB{
+  background: url('img/jin.png') no-repeat top center / 100% auto;
+  background-size: 100% 100%;
+}
+#pointC{
+  background: url('img/huo.png') no-repeat top center / 100% auto;
+  background-size: 100% 100%;
+}
+#pointD{
+  background: url('img/mu.png') no-repeat top center / 100% auto;
+  background-size: 100% 100%;
+}
+#pointE{
+  background: url('img/tu.png') no-repeat top center / 100% auto;
+  background-size: 100% 100%;
+}
+
+table{
+  margin: 0 auto;
+  width: 80%;
+}
+thead{
+  background: lightgray;
+  height: 80px;
+}
+tbody{
+  line-height: 60px;
+  text-align: center;
+}

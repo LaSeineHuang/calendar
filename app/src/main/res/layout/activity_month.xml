@@ -23,27 +23,27 @@
 
             <Button
                 android:id="@+id/yearView"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_fs_first_rank_vote_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="藏历数据" />
+                android:background="@drawable/bg_fs_first_rank_vote_num"
+                android:text="年"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/bt_monthView"
                 android:layout_width="wrap_content"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_fs_second_rank_vote_num"
                 android:layout_height="wrap_content"
-                android:text="月" />
+                android:background="@drawable/bg_fs_second_rank_vote_num"
+                android:text="月"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/bt_schedule"
-                android:textColor="@color/white"
-                android:background="@drawable/bg_fs_third_rank_vote_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="日程" />
+                android:background="@drawable/bg_fs_third_rank_vote_num"
+                android:text="日程"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -82,6 +82,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:showNumberBackground="true"
+        android:pointerIcon="arrow"
         app:solarTextBold="true">
 
         <androidx.core.widget.NestedScrollView
@@ -90,14 +91,19 @@
             android:layout_height="match_parent"
             android:background="@android:color/darker_gray">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/bg_miui10"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:background="@drawable/bg_miui10"
+                    android:layout_marginBottom="10dp"
                     android:orientation="vertical"
                     android:padding="15dp">
 
@@ -129,6 +135,22 @@
 
                 </LinearLayout>
 
+                <TextView
+                    android:id="@+id/content_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|left"
+                    android:visibility="gone"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/bg_miui10"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="15dp"/>
+            </LinearLayout>
+
+
         </androidx.core.widget.NestedScrollView>
 
     </com.necer.calendar.HuangCalendar>
@@ -138,21 +160,22 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_activity_month_query"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="LinearLayoutManager"
-        tools:listitem="@layout/item_query_results" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_activity_month_query"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="LinearLayoutManager"
+            tools:listitem="@layout/item_query_results" />
 
         <ImageView
             android:id="@+id/iv_schedule_add"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="50dp"
-            android:layout_marginRight="20dp"
             android:layout_gravity="bottom|end"
-            android:src="@drawable/ic_topic_publish"/>
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="50dp"
+            android:src="@drawable/ic_topic_publish" />
 
     </FrameLayout>
 

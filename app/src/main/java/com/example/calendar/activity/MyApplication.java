@@ -3,6 +3,10 @@ package com.example.calendar.activity;
 import android.app.Application;
 import android.content.Intent;
 import android.util.Log;
+import com.example.calendar.BuildConfig;
+import com.example.calendar.activity.notification.NotificationUtil;
+import com.example.calendar.activity.utils.CrashHandler;
+import com.example.calendar.activity.utils.CrashHandlerManage;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.TbsListener;
@@ -13,6 +17,13 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        if(BuildConfig.DEBUG){
+            CrashHandlerManage.getInstance()
+                    .init(getApplicationContext());
+            CrashHandler.getInstance().setDelayTime(1000 * 60 * 1).init(getApplicationContext());
+        }
+        NotificationUtil.initO_Notification(this);
+
         /* [new] 独立Web进程演示 */
         if (!startX5WebProcessPreinitService()) {
             return;

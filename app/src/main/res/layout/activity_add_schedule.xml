@@ -19,6 +19,7 @@
             android:layout_marginStart="16dp" />
 
         <TextView
+            android:id="@+id/title_tv"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:gravity="center"
@@ -143,6 +144,7 @@
 
 
     <EditText
+        android:id="@+id/mark_edit"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:gravity="start"

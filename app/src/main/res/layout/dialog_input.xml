@@ -14,8 +14,7 @@
         android:layout_marginHorizontal="16dp"
         android:layout_height="50dp"
         android:maxLength="8"
-        android:hint="搜索日程(YYYYMMDD)"
-        android:inputType="date"/>
+        android:hint="搜索日程（按标题查询）"/>
 
     <LinearLayout
         android:layout_width="match_parent"

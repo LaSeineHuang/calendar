@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 //添加greendao相关的plugin
 apply plugin: 'org.greenrobot.greendao'
+
 android {
 
     compileOptions {

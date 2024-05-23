@@ -1,6 +1,7 @@
 package com.example.calendar.activity.dao;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.dao.ScheduleQueryBeanDao;
 
@@ -84,6 +85,35 @@ public class StudentDaoOpen {
         QueryBuilder<ScheduleQueryBean> builder = DbManager.getDaoSession(context).getScheduleQueryBeanDao().queryBuilder();
 
         return builder.build().list();
+    }
+
+    /****
+     *根据标题模糊查询
+     * @param context
+     * @return
+     */
+    public static List<ScheduleQueryBean> queryAllByTitleLike(Context context,String name) {
+        List<ScheduleQueryBean> list = DbManager.getDaoSession(context).getScheduleQueryBeanDao().queryBuilder().where(ScheduleQueryBeanDao.Properties.Title.like("%" + name + "%")).list();
+        return list;
+    }
+    /****
+     *根据开始时间模糊查询
+     * @param context
+     * @return
+     */
+    public static List<ScheduleQueryBean> queryAllByStartTimeLike(Context context,String time) {
+        List<ScheduleQueryBean> list = DbManager.getDaoSession(context).getScheduleQueryBeanDao().queryBuilder().where(ScheduleQueryBeanDao.Properties.StartTime.like("%" + time + "%")).list();
+        return list;
+    }
+
+    /****
+     *根据结束时间模糊查询
+     * @param context
+     * @return
+     */
+    public static List<ScheduleQueryBean> queryAllByEndimeLike(Context context,String time) {
+        List<ScheduleQueryBean> list = DbManager.getDaoSession(context).getScheduleQueryBeanDao().queryBuilder().where(ScheduleQueryBeanDao.Properties.EndTime.like("%" + time + "%")).list();
+        return list;
     }
 
     /**

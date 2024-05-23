@@ -1,34 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:gravity="center_vertical"
+    android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
-    android:padding="3dp"
     android:background="@color/white"
-    android:layout_height="wrap_content">
+    android:id="@+id/lay"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="3dp">
 
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/main_make"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp" />
+        android:layout_marginLeft="16dp"
+        android:visibility="gone"
+        android:src="@drawable/main_make" />
+
     <TextView
         android:id="@+id/tv_item_query_results_content"
         android:layout_width="0dp"
-        android:layout_weight="1"
-        android:textColor="@color/color_666666"
-        android:textSize="16sp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp" />
+        android:layout_marginLeft="8dp"
+        android:layout_weight="1"
+        android:textColor="@color/color_666666"
+        android:textSize="16sp" />
 
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:src="@drawable/icon_col_selected"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp" />
+        android:layout_marginRight="16dp"
+        android:src="@drawable/icon_col_selected" />
+
+    <ImageView
+        android:id="@+id/edit_img"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:src="@mipmap/bg_edit" />
 
 </LinearLayout>

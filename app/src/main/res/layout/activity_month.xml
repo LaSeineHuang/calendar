@@ -134,7 +134,44 @@
                         android:textSize="12sp" />
 
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_miui10"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical"
+                    android:padding="15dp">
 
+                    <TextView
+                        android:id="@+id/tv_countdown"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="距离节日还有n天"
+                        android:textColor="#333333"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tv_holiday"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text=""
+                        android:textColor="#666666"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_xiuxing"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text=""
+                        android:textColor="#666666"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
                 <TextView
                     android:id="@+id/content_tv"
                     android:layout_width="match_parent"

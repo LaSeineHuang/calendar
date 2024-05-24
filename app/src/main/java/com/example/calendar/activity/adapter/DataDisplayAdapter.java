@@ -135,7 +135,7 @@ public class DataDisplayAdapter  extends BaseMultiItemQuickAdapter<MultiItemEnti
 
 
 
-                baseViewHolder.getView(R.id.tv_wu_yao_zhi).setOnClickListener(new View.OnClickListener() {
+                baseViewHolder.getView(R.id.bt_PlaceOfwuyao).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         //点击五曜值

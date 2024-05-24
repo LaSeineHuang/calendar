@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -52,6 +53,7 @@ import com.necer.listener.OnCalendarMultipleChangedListener;
 //import com.necer.ncalendar.R;
 import com.necer.painter.InnerPainter;
 import com.necer.utils.CalendarUtil;
+import com.necer.utils.HolidayUtil;
 import com.necer.view.WeekBar;
 
 import org.joda.time.LocalDate;
@@ -82,6 +84,8 @@ public class MonthActivity<activity_month> extends BaseActivity {
     private FrameLayout flActivityMonthQuery;
 
     private TextView tv_zang, contentTv;//显示藏历
+    
+    private TextView tv_countdown,tv_holiday, tv_xiuxing;
 
     private Button searchButton, btSchedule, btMonthView, yearView;
 
@@ -134,6 +138,9 @@ public class MonthActivity<activity_month> extends BaseActivity {
         flActivityMonthQuery = findViewById(R.id.fl_activity_month_query);
         ivScheduleAdd = findViewById(R.id.iv_schedule_add);
         yearView = findViewById(R.id.yearView);
+        tv_holiday=findViewById(R.id.tv_holiday);
+        tv_xiuxing=findViewById(R.id.tv_xiuxing);
+        tv_countdown=findViewById(R.id.tv_countdown);
 
 
 //        List<String> pointList = Arrays.asList("2024-5-25", "2024-5-23");
@@ -229,8 +236,21 @@ public class MonthActivity<activity_month> extends BaseActivity {
                     zangli[2]=zday;
                     tv_data.setText("公历："+localDate.toString("yyyy年MM月dd日"));
                     tv_desc.setText("农历："+lunar.chineseEra + lunar.animals + "年" + lunar.lunarMonthStr + lunar.lunarDayStr);
-                    tv_zang.setText("藏历:"+ lunar.zangli +"年"+lunar.lunarMonthStr+"月"+ lunar.lunarDayStr);
+                    tv_zang.setText("藏历:"+ lunar.zangli+lunar.animals +"年"+lunar.lunarMonthStr+"月"+ lunar.lunarDayStr);
                     queryToDay(tv_data.getText().toString());
+                    String[] message=new String[2];
+                    message= HolidayUtil.getZangLiHoliday(lunar);
+                    if(message[0]!=null){
+                        tv_holiday.setText(message[0]);
+                    }else{
+                        tv_holiday.setText("");
+
+                    }
+                    if(message[1]!=null){
+                        tv_xiuxing.setText(message[1]);
+                    }else{
+                        tv_xiuxing.setText("");
+                    }
                 } else {
                     tv_data.setText("");
                     tv_desc.setText("");

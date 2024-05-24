@@ -29,6 +29,7 @@ public class ScheduleQueryBeanDao extends AbstractDao<ScheduleQueryBean, Long> {
         public final static Property Location = new Property(2, String.class, "location", false, "LOCATION");
         public final static Property StartTime = new Property(3, String.class, "startTime", false, "START_TIME");
         public final static Property EndTime = new Property(4, String.class, "endTime", false, "END_TIME");
+        public final static Property Remark = new Property(5, String.class, "remark", false, "REMARK");
     }
 
 
@@ -48,7 +49,8 @@ public class ScheduleQueryBeanDao extends AbstractDao<ScheduleQueryBean, Long> {
                 "\"TITLE\" TEXT," + // 1: title
                 "\"LOCATION\" TEXT," + // 2: location
                 "\"START_TIME\" TEXT," + // 3: startTime
-                "\"END_TIME\" TEXT);"); // 4: endTime
+                "\"END_TIME\" TEXT," + // 4: endTime
+                "\"REMARK\" TEXT);"); // 5: remark
     }
 
     /** Drops the underlying database table. */
@@ -85,6 +87,11 @@ public class ScheduleQueryBeanDao extends AbstractDao<ScheduleQueryBean, Long> {
         if (endTime != null) {
             stmt.bindString(5, endTime);
         }
+ 
+        String remark = entity.getRemark();
+        if (remark != null) {
+            stmt.bindString(6, remark);
+        }
     }
 
     @Override
@@ -115,6 +122,11 @@ public class ScheduleQueryBeanDao extends AbstractDao<ScheduleQueryBean, Long> {
         if (endTime != null) {
             stmt.bindString(5, endTime);
         }
+ 
+        String remark = entity.getRemark();
+        if (remark != null) {
+            stmt.bindString(6, remark);
+        }
     }
 
     @Override
@@ -129,7 +141,8 @@ public class ScheduleQueryBeanDao extends AbstractDao<ScheduleQueryBean, Long> {
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // title
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // location
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // startTime
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4) // endTime
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // endTime
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5) // remark
         );
         return entity;
     }
@@ -141,6 +154,7 @@ public class ScheduleQueryBeanDao extends AbstractDao<ScheduleQueryBean, Long> {
         entity.setLocation(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setStartTime(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setEndTime(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setRemark(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
      }
     
     @Override

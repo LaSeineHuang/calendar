@@ -15,19 +15,21 @@ public class ScheduleQueryBean  {
     public ScheduleQueryBean(){
 
     }
-    public ScheduleQueryBean(String title, String location, String startTime, String endTime) {
+    public ScheduleQueryBean(String title, String location, String startTime, String endTime,String remark) {
         this.title = title;
         this.location = location;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.remark=remark;
     }
-    @Generated(hash = 1483788621)
-    public ScheduleQueryBean(Long id, String title, String location, String startTime, String endTime) {
+    @Generated(hash = 807576578)
+    public ScheduleQueryBean(Long id, String title, String location, String startTime, String endTime, String remark) {
         this.id = id;
         this.title = title;
         this.location = location;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.remark = remark;
     }
 
     @Id(autoincrement = true)//自增ID
@@ -40,6 +42,8 @@ public class ScheduleQueryBean  {
     private String startTime="";//开始时间
 
     private String endTime="";//结束时间
+
+    private String remark="";//备注
 
     public String getTitle() {
         return title;
@@ -55,6 +59,13 @@ public class ScheduleQueryBean  {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     public String getStartTime() {

@@ -78,16 +78,19 @@ public class AddScheduleActivity extends AppCompatActivity {
 
                 //点击确认按钮,回调数据
                 if(scheduleQueryBean == null){
-                    ScheduleQueryBean queryBean =  new ScheduleQueryBean(etTitleView.getText().toString(),
+                    ScheduleQueryBean queryBean =  new ScheduleQueryBean(
+                            etTitleView.getText().toString(),
                             etLocaleView.getText().toString(),
                             etStartQueryTime.getText().toString(),
-                            etEndQueryTime.getText().toString());
+                            etEndQueryTime.getText().toString(),
+                            markEdit.getText().toString());
                     StudentDaoOpen.insertData(AddScheduleActivity.this,queryBean);
                 }else {
                     scheduleQueryBean.setTitle(etTitleView.getText().toString());
                     scheduleQueryBean.setLocation(etLocaleView.getText().toString());
                     scheduleQueryBean.setStartTime(etStartQueryTime.getText().toString());
                     scheduleQueryBean.setEndTime(etEndQueryTime.getText().toString());
+                    scheduleQueryBean.setRemark(markEdit.getText().toString());
                     StudentDaoOpen.saveData(AddScheduleActivity.this,scheduleQueryBean);
                 }
 
@@ -159,6 +162,7 @@ public class AddScheduleActivity extends AppCompatActivity {
             etLocaleView.setText(scheduleQueryBean.getLocation());
             etStartQueryTime.setText(scheduleQueryBean.getStartTime());
             etEndQueryTime.setText(scheduleQueryBean.getEndTime());
+            markEdit.setText(scheduleQueryBean.getRemark());
         }
     }
 }

@@ -75,7 +75,8 @@ public class CheckService extends Service {
             String startTime = scheduleQueryBean.getStartTime();
             String endTime = scheduleQueryBean.getEndTime();
             String location = scheduleQueryBean.getLocation();
-            not(title, location + "\r\n" + startTime.replace(ymd, "") + "~" + endTime.replace(ymd, ""));
+            String remark = scheduleQueryBean.getRemark();
+            not(title, location + "\r\n" + startTime.replace(ymd, "") + "~" + endTime.replace(ymd, "")+remark.replace(ymd, ""));
         }
     }
 

@@ -65,4 +65,9 @@ public class Lunar implements Serializable {
      */
     public String chineseEra;
 
+    /**
+     * 藏历年
+     */
+    public String zangli;
+
 }

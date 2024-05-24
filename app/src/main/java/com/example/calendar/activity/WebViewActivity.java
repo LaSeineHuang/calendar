@@ -64,7 +64,7 @@ public class WebViewActivity extends AppCompatActivity {
                 // 将 JSON 数据转换为字符串
                 String jsonString = jsonData.toString();
 
-                // 构建 JavaScript 代码，调用 setIsData 函数，并传入 JSON 数据
+                // 构建 JavaScript 代码，调用 setJSData 函数，并传入 JSON 数据
                 String jsCode = "javascript:setJSData(" + jsonString + ")";
                 Log.d(TAG, "receive:" + jsonString);
 

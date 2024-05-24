@@ -25,9 +25,9 @@ public class DataDisplayActivity extends AppCompatActivity {
     private RecyclerView rvActivityDataView;
     private DataDisplayAdapter adapter;
     private TextView dateTextView;
-    int year;
-    int month;
-    int day;
+    int year,Zyear;
+    int month,Zmonth;
+    int day,Zday;
 
     DataDisplayOne dataDisplayOne= new DataDisplayOne();
     DataDisplayTwo dataDisplayTwo=new DataDisplayTwo();
@@ -41,6 +41,9 @@ public class DataDisplayActivity extends AppCompatActivity {
         year = intent.getIntExtra("YEAR", -1); // 默认值为-1表示没有数据
         month = intent.getIntExtra("MONTH", -1);
         day = intent.getIntExtra("DAY", -1);
+        Zyear = intent.getIntExtra("ZYEAR", -1); // 默认值为-1表示没有数据
+        Zmonth = intent.getIntExtra("ZMONTH", -1);
+        Zday = intent.getIntExtra("ZDAY", -1);
         // 使用这些数据来初始化界面或做其他操作
 
         initView();
@@ -55,13 +58,15 @@ public class DataDisplayActivity extends AppCompatActivity {
     }
 
     private void initData(){
-        BeanTest beanTest= MainCumulative.cumulative(year,month,day);
-        dataDisplayOne.setDate(beanTest.getYear(),beanTest.getMonth(),beanTest.getDay());
+        BeanTest beanTest= MainCumulative.cumulative(Zyear,Zmonth,Zday,year,month,day);
+        dataDisplayOne.setGDate(year,month,day);
+        dataDisplayOne.setDate(Zyear,Zmonth,Zday);
         dataDisplayOne.setData(beanTest.getCumulativeMonth(), beanTest.getCumulativeYu(),beanTest.getInteger(), beanTest.getZero());
         dataDisplayOne.setCelestialBase(beanTest.celestialBase1, beanTest.celestialBase2, beanTest.celestialBase3, beanTest.celestialBase4, beanTest.celestialBase5 );
         dataDisplayOne.setSunBase(beanTest.sunBase1,beanTest.sunBase2,beanTest.sunBase3,beanTest.sunBase4,beanTest.sunBase5);
 
-        dataDisplayTwo.setDate(beanTest.getYear(),beanTest.getMonth(),beanTest.getDay());
+        dataDisplayOne.setGDate(year,month,day);
+        dataDisplayTwo.setDate(Zyear,Zmonth,Zday);
         dataDisplayTwo.setCertainCelestial(beanTest.certainCelestial1,beanTest.certainCelestial2,beanTest.certainCelestial3, beanTest.certainCelestial4, beanTest.certainCelestial5,beanTest.certainCelestial6);
         dataDisplayTwo.setCOfNetAndSun(beanTest.cOfNetAndSun1, beanTest.cOfNetAndSun2, beanTest.cOfNetAndSun3, beanTest.cOfNetAndSun4, beanTest.cOfNetAndSun5, beanTest.cOfNetAndSun6);
         dataDisplayTwo.setCertainSun(beanTest.certainSun1, beanTest.certainSun2, beanTest.certainSun3, beanTest.certainSun4, beanTest.certainSun5);

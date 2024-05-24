@@ -37,7 +37,8 @@ public class DataDisplayAdapter  extends BaseMultiItemQuickAdapter<MultiItemEnti
         switch (multiItemEntity.getItemType()) {
             case 1:
                 DataDisplayOne dataDisplayOne = (DataDisplayOne)multiItemEntity;
-                baseViewHolder.<TextView>getView(R.id.tv_data).setText(dataDisplayOne.getDate());
+                baseViewHolder.<TextView>getView(R.id.tv_zdata).setText(dataDisplayOne.getDate());
+                baseViewHolder.<TextView>getView(R.id.tv_data).setText(dataDisplayOne.getGDate());
                 baseViewHolder.<TextView>getView(R.id.tv_month).setText(dataDisplayOne.getMonth());
 
                 baseViewHolder.<TextView>getView(R.id.cumulative_Month).setText(dataDisplayOne.getCumulativeMonth());

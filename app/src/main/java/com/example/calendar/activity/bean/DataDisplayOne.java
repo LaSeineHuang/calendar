@@ -10,6 +10,9 @@ public class DataDisplayOne implements MultiItemEntity {
     public int y;
     public int m;
     public int d;
+    public int GY;
+    public int GM;
+    public int GD;
     public int cumulativeMonth;
     public int suanyu;
 
@@ -44,11 +47,20 @@ public class DataDisplayOne implements MultiItemEntity {
         this.d=d;
 
     }
+    public void setGDate(int GY,int GM,int GD){
+        this.GY=GY;
+        this.GM=GM;
+        this.GD=GD;
+    }
+    public String getGDate() {
+        return "公历："+GY+"年"+ GM+"月"+ GD+"日";
+    }
+
     public String getDate() {
-        return y+"年"+ m+"月"+ d+"日";
+        return "藏历："+y+"年"+ m+"月"+ d+"日";
     }
     public String getMonth(){
-        return m+"月基础数据";
+        return "藏历"+m+"月基础数据";
     }
 
     public void setData(int cumulativeMonth,int suanyu,int integer,int zero){

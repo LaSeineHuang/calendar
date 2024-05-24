@@ -6,7 +6,9 @@ public class DataDisplayTwo implements MultiItemEntity {
     public int y;
     public int m;
     public int d;
-
+    public int GY;
+    public int GM;
+    public int GD;
     public int certainCelestial1;
     public int certainCelestial2;
     public int certainCelestial3;
@@ -87,6 +89,11 @@ public class DataDisplayTwo implements MultiItemEntity {
         this.m=m;
         this.d=d;
 
+    }
+    public void setGDate(int GY,int GM,int GD){
+        this.GY=GY;
+        this.GM=GM;
+        this.GD=GD;
     }
     public String getDate() {
         return y+"年"+ m+"月"+ d+"日五要素";

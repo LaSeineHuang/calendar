@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_fs_first_rank_vote_num"
-                android:text="年"
+                android:text="天文数据"
                 android:textColor="@color/white" />
 
             <Button

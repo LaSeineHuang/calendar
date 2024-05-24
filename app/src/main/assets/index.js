@@ -55,7 +55,7 @@ const setJSData = (json) => {
   let html = ''
   for(let i = 0; i < table.length; i++){
     html += `<tr>
-    <td class="td2">${table[i].wuyao}</td>
+    <td class="td1">${table[i].wuyao}</td>
     <td>${table[i].xiuwei}</td>
     <td>${table[i].xiuming}</td>
   </tr>`

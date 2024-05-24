@@ -5,7 +5,7 @@ import com.example.calendar.activity.bean.BeanTest;
 import javax.crypto.spec.PBEKeySpec;
 
 public class MainCumulative {
-    public static BeanTest cumulative(int y, int m, int day) {
+    public static BeanTest cumulative(int y, int m, int day,int Gy,int Gm,int Gd) {
         BeanTest beanTest=new BeanTest();
 
         Year year=new Ditui().mainCumulative(y,m);//这里用ditui存的数据

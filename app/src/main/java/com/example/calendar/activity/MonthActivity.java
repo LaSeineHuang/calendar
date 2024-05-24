@@ -94,6 +94,8 @@ public class MonthActivity<activity_month> extends BaseActivity {
     private List<ScheduleQueryBean> listData = new ArrayList<ScheduleQueryBean>();//查询日程对应的数据
     private MonthQueryResultsAdapter adapter;
 
+    final int[] zangli=new int[3];
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -202,6 +204,7 @@ public class MonthActivity<activity_month> extends BaseActivity {
 
     private void initListener() {
         final LocalDate[] selectedDate = {new LocalDate()};
+
         miui10Calendar.setOnCalendarChangedListener(new OnCalendarChangedListener() {
             @Override
             public void onCalendarChange(BaseCalendar baseCalendar, int year, int month, LocalDate localDate, DateChangeBehavior dateChangeBehavior) {
@@ -218,9 +221,15 @@ public class MonthActivity<activity_month> extends BaseActivity {
                 if (localDate != null) {
                     CalendarDate calendarDate = CalendarUtil.getCalendarDate(localDate);
                     Lunar lunar = calendarDate.lunar;
-                    tv_data.setText(localDate.toString("yyyy年MM月dd日"));
-                    tv_desc.setText(lunar.chineseEra + lunar.animals + "年" + lunar.lunarMonthStr + lunar.lunarDayStr);
-                    tv_zang.setText("藏历"+ lunar.lunarMonthStr + lunar.lunarDayStr);
+                    int zyear =lunar.lunarYear;
+                    int zmonth =lunar.lunarMonth;
+                    int zday =lunar.lunarDay;
+                    zangli[0]=zyear;
+                    zangli[1]=zmonth;
+                    zangli[2]=zday;
+                    tv_data.setText("公历："+localDate.toString("yyyy年MM月dd日"));
+                    tv_desc.setText("农历："+lunar.chineseEra + lunar.animals + "年" + lunar.lunarMonthStr + lunar.lunarDayStr);
+                    tv_zang.setText("藏历:"+ lunar.zangli +"年"+lunar.lunarMonthStr+"月"+ lunar.lunarDayStr);
                     queryToDay(tv_data.getText().toString());
                 } else {
                     tv_data.setText("");
@@ -285,10 +294,14 @@ public class MonthActivity<activity_month> extends BaseActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MonthActivity.this, DataDisplayActivity.class);
                 // 获取当前选中的日期
-                Log.d(TAG, "   当前页面选中 " + selectedDate[0]);
+          //      Log.d(TAG, "   当前页面选中 " + selectedDate[0]);
+          //      Log.d(TAG, "   当前页面选中藏历 " + zangli[0]+"年"+zangli[1]+"月"+zangli[2]+"日");
                 intent.putExtra("YEAR", selectedDate[0].getYear());
                 intent.putExtra("MONTH", selectedDate[0].getMonthOfYear());
                 intent.putExtra("DAY", selectedDate[0].getDayOfMonth());
+                intent.putExtra("ZYEAR", zangli[0]);
+                intent.putExtra("ZMONTH", zangli[1]);
+                intent.putExtra("ZDAY", zangli[2]);
                 startActivity(intent);
             }
         });

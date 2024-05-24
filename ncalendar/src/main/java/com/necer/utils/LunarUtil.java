@@ -160,6 +160,7 @@ public class LunarUtil {
         lunar.chineseEra = getGan(lunar.lunarYear) + getZhi(lunar.lunarYear);
         lunar.animals = getAnimalString(lunar.lunarYear);
         lunar.lunarYearStr = getGan(lunar.lunarYear) + getZhi(lunar.lunarYear) + getAnimalString(lunar.lunarYear);
+        lunar.zangli=getZangli(getGan(lunar.lunarYear))+getAnimalString(lunar.lunarYear);
         lunar.lunarMonthStr = getMonthStr(lunar.lunarMonth, lunar.isLeap);
         lunar.lunarDayStr = getDayStr(lunar.lunarDay);
         lunar.lunarOnDrawStr = getDrawStr(lunar.lunarMonth, lunar.lunarDay, lunar.lunarDayStr, lunar.isLeap);
@@ -179,6 +180,33 @@ public class LunarUtil {
 
     private static String getGan(int lunarYear) {
         return Gan[(lunarYear - 3) % 10];
+    }
+
+    private static String getZangli(String Gan){
+        switch (Gan){
+            case "甲":
+                return "木";
+            case "乙":
+                return "木";
+            case "丙":
+                return "火";
+            case "丁":
+                return "火";
+            case "壬":
+                return "水";
+            case "葵":
+                return "水";
+            case "戊己":
+                return "土";
+            case "己":
+                return "土";
+            case "庚":
+                return "金";
+            case "辛":
+                return "金";
+
+        }
+        return null;
     }
 
     private static String getZhi(int lunarYear) {

@@ -84,7 +84,7 @@ public class MonthActivity<activity_month> extends BaseActivity {
     private FrameLayout flActivityMonthQuery;
 
     private TextView tv_zang, contentTv;//显示藏历
-    
+
     private TextView tv_countdown,tv_holiday, tv_xiuxing;
 
     private Button searchButton, btSchedule, btMonthView, yearView;
@@ -222,8 +222,6 @@ public class MonthActivity<activity_month> extends BaseActivity {
 
                 Log.e(TAG, "baseCalendar::" + baseCalendar);
                 TingYear tingYear = Cumulative.mainCumulative(year, month);
-//                tv_zang.setText("藏历："+tingYear.getYear() + "年" + tingYear.getMonth() + "月" );
-                //tv_zang.setText("藏历一月十三日");
 
                 if (localDate != null) {
                     CalendarDate calendarDate = CalendarUtil.getCalendarDate(localDate);

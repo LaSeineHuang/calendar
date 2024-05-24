@@ -373,6 +373,14 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:text="五曜值"/>
+    <Button
+        android:id="@+id/bt_PlaceOfwuyao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:background="@drawable/bg_fs_second_rank_vote_num"
+        android:text="查看五曜位置"
+        android:textColor="@color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -540,7 +548,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:text="曜"
+                android:text="宿"
                 android:paddingLeft="2dp"
                 android:background="@drawable/text_rounded_corners_two"
                 android:gravity="center_vertical"

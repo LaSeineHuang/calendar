@@ -78,8 +78,12 @@ public class HolidayUtil {
             message = "元宵节";
         } else if (lunarMonth == 2 && lunarDay == 2) {
             message = "龙抬头";
+        } else if (lunarMonth == 3 && lunarDay == 15) {
+            message = "开耕节";
         } else if (lunarMonth == 5 && lunarDay == 5) {
             message = "端午节";
+        }else if (lunarMonth == 6 && lunarDay == 30) {
+            message = "雪顿节";
         } else if (lunarMonth == 7 && lunarDay == 7) {
             message = "七夕";
         } else if (lunarMonth == 7 && lunarDay == 15) {
@@ -88,13 +92,82 @@ public class HolidayUtil {
             message = "中秋节";
         } else if (lunarMonth == 9 && lunarDay == 9) {
             message = "重阳节";
+        } else if (lunarMonth == 10 && lunarDay == 15) {
+            message = "仙女节";
         } else if (lunarMonth == 12 && lunarDay == 8) {
             message = "腊八节";
         } else if (lunarMonth == 12 && lunarDay == 23) {
             message = "小年";
+        } else if (lunarMonth == 12 && lunarDay == 25) {
+            message = "燃灯节";
         } else if (lunarMonth == 12 && lunar.lunarMonth != nextLunar.lunarMonth) {
             message = "除夕";
         }
+        return message;
+    }
+    /**
+     * 用于藏历节日
+     *
+     * @return 藏历节日
+     */
+    public static String[] getZangLiHoliday(Lunar lunar) {
+        int lunarMonth = lunar.lunarMonth;
+        int lunarDay = lunar.lunarDay;
+        String[] message=new String[2];
+            switch (lunarDay) {
+                case 0:
+                    if (lunarMonth == 0)
+                        message[0]= "神变节";
+                    else {
+                        message[0] = "禅定胜王佛节日";
+                        message[1]= "作何善恶成百倍";
+                    }
+                    break;
+                case 3:
+                    if (lunarMonth == 5)
+                        message[0] = "释迦牟尼佛初转法轮日";
+                    break;
+                case 6:
+                    if (lunarMonth == 3)
+                        message[0] = "释迦牟尼佛诞辰";
+                    break;
+                case 7:
+                    message[0] = "药师佛节日";
+                    message[1] = "作何善恶成千倍";
+                    break;
+                case 9:
+                    message[0] = "莲师荟供日";
+                    message[1] = "作何善恶成十万倍";
+                    break;
+                case 14:
+                    if (lunarMonth == 3)
+                        message[0] = "释迦牟尼佛<br>成道日涅槃日";
+                    else if (lunarMonth == 5)
+                        message[0] = "释迦牟尼佛入胎日";
+                    else
+                        message[0] = "阿弥陀佛节日";
+                        message[1] = "作何善恶成百万倍";
+                    break;
+                case 17:
+                    message[0] = "观音菩萨节日";
+                    message[1] = "作何善恶成千万倍";
+                    break;
+                case 19:
+                    if (lunarMonth == 8)
+                        message[0] = "释迦牟尼佛天降日";
+                    break;
+                case 20:
+                    message[0] = "地藏王菩萨节日";
+                    message[1] = "作何善恶成亿倍";
+                    break;
+                case 24:
+                    message[0] = "空行母荟供日";
+                    break;
+                case 29:
+                    message[0] = "释迦牟尼佛节日";
+                    message[1]= "作何善恶成九亿倍";
+                    break;
+            }
         return message;
     }
 

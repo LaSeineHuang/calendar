@@ -5,12 +5,14 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.webkit.JavascriptInterface;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ThreadUtils;
 import com.example.calendar.R;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
@@ -39,45 +41,9 @@ public class WebViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_web_view);
         mWebView = findViewById(R.id.web_view);
         initWebViewSettings();
-
         initWebViewClient();
-//        initWebChromeClient();
-//        initJavaScriptInterface();
-
+        mWebView.addJavascriptInterface(new AndroidtoJs(), "Android");
         mWebView.loadUrl(mHomeUrl);
-//        mWebView.evaluateJavascript("javascript:json.property = 'value';", null);
-        // 定义 JSON 数据
-        JSONObject jsonData = new JSONObject();
-        try {
-            jsonData.put("date", "2024.03.13");
-            jsonData.put("mercury", 9);
-            jsonData.put("venus", 22);
-            jsonData.put("mars", 21);
-            jsonData.put("jupiter", 2);
-            jsonData.put("saturn", 23);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        ThreadUtils.runOnUiThreadDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // 将 JSON 数据转换为字符串
-                String jsonString = jsonData.toString();
-
-                // 构建 JavaScript 代码，调用 setJSData 函数，并传入 JSON 数据
-                String jsCode = "javascript:setJSData(" + jsonString + ")";
-                Log.d(TAG, "receive:" + jsonString);
-
-                mWebView.evaluateJavascript(jsCode, new ValueCallback<String>() {
-                    @Override
-                    public void onReceiveValue(String value) {
-                        Log.d(TAG, "receive:" + value);
-                    }
-                });
-            }
-        },100);
-
-
     }
 
     //   基本的WebViewSetting
@@ -177,5 +143,25 @@ public class WebViewActivity extends AppCompatActivity {
             mWebView.destroy();
         }
         super.onDestroy();
+    }
+
+    // 继承自Object类
+    public class AndroidtoJs extends Object {
+        @JavascriptInterface
+        public String getJson() { // 这里采用的是原生的跳转方法
+            JSONObject jsonData = new JSONObject();
+            try {
+                jsonData.put("date", "2024.03.13");
+                jsonData.put("mars", 21);//火
+                jsonData.put("jupiter", 2);//木
+                jsonData.put("saturn", 23);//土
+                jsonData.put("mercury", 9);//水
+                jsonData.put("venus", 22);//金
+//                我下图的界面是火 木 土 水 金，传进去的顺序是水 金 火 木 土，调一下顺序。
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return jsonData.toString();
+        }
     }
 }

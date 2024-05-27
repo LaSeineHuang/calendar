@@ -19,6 +19,7 @@ public class MonthQueryResultsAdapter extends BaseQuickAdapter<ScheduleQueryBean
     public MonthQueryResultsAdapter(List<ScheduleQueryBean> data) {
         super(R.layout.item_query_results, data);
         addChildClickViewIds(R.id.edit_img);
+        addChildClickViewIds(R.id.del_img);
     }
 
     @Override

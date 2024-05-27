@@ -42,4 +42,12 @@
         android:layout_marginRight="16dp"
         android:src="@mipmap/bg_edit" />
 
+    <ImageView
+        android:id="@+id/del_img"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:src="@mipmap/bg_del" />
+
 </LinearLayout>

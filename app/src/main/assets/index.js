@@ -7,12 +7,12 @@
 //   saturn: 23, // 土
 // }
 
-window.document.title = json.date
-
-let data = {}
+//window.document.title = json.date
+//
+//let data = {}
 
 const dataObj = {
-  0: '娄', 
+  0: '娄',
   1: '胃',
   2: '昴',
   3: '毕',
@@ -43,8 +43,8 @@ const dataObj = {
 
 let table = []
 
-const setJSData = (json) => {
-  data = JSON.parse(JSON.stringify(json))
+const setJSData = () => {
+  data = JSON.parse(window.Android.getJson())
   table = [
     { wuyao: '水曜', xiuwei: data.mercury, xiuming: dataObj[data.mercury] },
     { wuyao: '金曜', xiuwei: data.venus, xiuming: dataObj[data.venus] },
@@ -65,7 +65,7 @@ const setJSData = (json) => {
   }, 100)
 }
 
-setJSData(json)
+setJSData()
 
 
 const layerRadii = [60, 150, 250, 350, 450]; // 每层的内半径
@@ -95,4 +95,3 @@ placePoint(data.venus, layerRadii[1], 'pointB')
 placePoint(data.mars, layerRadii[2], 'pointC')
 placePoint(data.jupiter, layerRadii[3], 'pointD')
 placePoint(data.saturn, layerRadii[4], 'pointE')
-

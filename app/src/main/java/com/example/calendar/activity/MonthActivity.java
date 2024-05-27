@@ -43,6 +43,7 @@ import com.example.calendar.activity.cumulativeDATA.TingYear;
 import com.example.calendar.activity.dao.StudentDaoOpen;
 import com.example.calendar.activity.dialog.DialogUtils;
 import com.example.calendar.activity.dialog.IConfirmAndCancelCallBack;
+import com.example.calendar.activity.utils.Holiday;
 import com.necer.calendar.BaseCalendar;
 import com.necer.calendar.HuangCalendar;
 import com.necer.entity.CalendarDate;
@@ -54,6 +55,7 @@ import com.necer.listener.OnCalendarMultipleChangedListener;
 import com.necer.painter.InnerPainter;
 import com.necer.utils.CalendarUtil;
 import com.necer.utils.HolidayUtil;
+import com.necer.utils.LunarUtil;
 import com.necer.view.WeekBar;
 
 import org.joda.time.LocalDate;
@@ -85,7 +87,7 @@ public class MonthActivity<activity_month> extends BaseActivity {
 
     private TextView tv_zang, contentTv;//显示藏历
 
-    private TextView tv_countdown,tv_holiday, tv_xiuxing;
+    private TextView tv_countdown, tv_holiday, tv_xiuxing;
 
     private Button searchButton, btSchedule, btMonthView, yearView;
 
@@ -98,7 +100,8 @@ public class MonthActivity<activity_month> extends BaseActivity {
     private List<ScheduleQueryBean> listData = new ArrayList<ScheduleQueryBean>();//查询日程对应的数据
     private MonthQueryResultsAdapter adapter;
 
-    final int[] zangli=new int[3];
+    final int[] zangli = new int[3];
+    private AlertDialog alertDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -115,13 +118,40 @@ public class MonthActivity<activity_month> extends BaseActivity {
             @Override
             public void onItemChildClick(@NonNull BaseQuickAdapter adapter, @NonNull View view, int position) {
                 ScheduleQueryBean queryBean = listData.get(position);
-                Intent intent = new Intent(MonthActivity.this, AddScheduleActivity.class);
-                intent.putExtra(ADD_SCHEDULE_BEAN_KEY, GsonUtils.toJson(queryBean));
-                MonthActivity.this.startActivityForResult(intent, 10001);
+                if (view.getId() == R.id.edit_img) {
+                    Intent intent = new Intent(MonthActivity.this, AddScheduleActivity.class);
+                    intent.putExtra(ADD_SCHEDULE_BEAN_KEY, GsonUtils.toJson(queryBean));
+                    MonthActivity.this.startActivityForResult(intent, 10001);
+                }
+
+                if (view.getId() == R.id.del_img) {
+                    delData(queryBean);
+                }
             }
         });
 
         initData();
+    }
+
+    private void delData(ScheduleQueryBean queryBean) {
+        alertDialog = new AlertDialog.Builder(MonthActivity.this)
+                .setTitle("温馨提示")
+                .setMessage("确定删除：" + queryBean.getTitle() + "\r\n" + queryBean.getStartTime() + "~" + queryBean.getEndTime())
+                .setNegativeButton("确定", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        StudentDaoOpen.deleteByKeyData(MonthActivity.this, queryBean.getId());
+                        alertDialog.dismiss();//销毁对话框
+                        initData();
+                    }
+                })
+                .setPositiveButton("取消", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        alertDialog.dismiss();//销毁对话框
+                    }
+                })
+                .create();
+
+        alertDialog.show();
     }
 
     private void initView() {
@@ -138,9 +168,9 @@ public class MonthActivity<activity_month> extends BaseActivity {
         flActivityMonthQuery = findViewById(R.id.fl_activity_month_query);
         ivScheduleAdd = findViewById(R.id.iv_schedule_add);
         yearView = findViewById(R.id.yearView);
-        tv_holiday=findViewById(R.id.tv_holiday);
-        tv_xiuxing=findViewById(R.id.tv_xiuxing);
-        tv_countdown=findViewById(R.id.tv_countdown);
+        tv_holiday = findViewById(R.id.tv_holiday);
+        tv_xiuxing = findViewById(R.id.tv_xiuxing);
+        tv_countdown = findViewById(R.id.tv_countdown);
 
 
 //        List<String> pointList = Arrays.asList("2024-5-25", "2024-5-23");
@@ -216,7 +246,7 @@ public class MonthActivity<activity_month> extends BaseActivity {
             @Override
             public void onCalendarChange(BaseCalendar baseCalendar, int year, int month, LocalDate localDate, DateChangeBehavior dateChangeBehavior) {
                 tv_result.setText(year + "年" + month + "月" + "   当前页面选中 " + localDate);
-                selectedDate[0] =localDate;
+                selectedDate[0] = localDate;
                 Log.d(TAG, "   当前页面选中 " + localDate);
                 Log.d(TAG, "   dateChangeBehavior " + dateChangeBehavior);
 
@@ -226,34 +256,43 @@ public class MonthActivity<activity_month> extends BaseActivity {
                 if (localDate != null) {
                     CalendarDate calendarDate = CalendarUtil.getCalendarDate(localDate);
                     Lunar lunar = calendarDate.lunar;
-                    int zyear =lunar.lunarYear;
-                    int zmonth =lunar.lunarMonth;
-                    int zday =lunar.lunarDay;
-                    zangli[0]=zyear;
-                    zangli[1]=zmonth;
-                    zangli[2]=zday;
-                    tv_data.setText("公历："+localDate.toString("yyyy年MM月dd日"));
-                    tv_desc.setText("农历："+lunar.chineseEra + lunar.animals + "年" + lunar.lunarMonthStr + lunar.lunarDayStr);
-                    tv_zang.setText("藏历:"+ lunar.zangli+lunar.animals +"年"+lunar.lunarMonthStr+"月"+ lunar.lunarDayStr);
-                    queryToDay(tv_data.getText().toString());
-                    String[] message=new String[2];
-                    message= HolidayUtil.getZangLiHoliday(lunar);
-                    if(message[0]!=null){
+                    int zyear = lunar.lunarYear;
+                    int zmonth = lunar.lunarMonth;
+                    int zday = lunar.lunarDay;
+                    zangli[0] = zyear;
+                    zangli[1] = zmonth;
+                    zangli[2] = zday;
+                    tv_data.setText("公历：" + localDate.toString("yyyy年MM月dd日"));
+                    tv_desc.setText("农历：" + lunar.chineseEra + lunar.animals + "年" + lunar.lunarMonthStr + lunar.lunarDayStr);
+                    tv_zang.setText("藏历:" + lunar.zangli + lunar.animals + "年" + lunar.lunarMonthStr + "月" + lunar.lunarDayStr);
+                    queryToDay(tv_data.getText().toString().replace("公历：", ""));
+                    String[] message = new String[2];
+                    message = HolidayUtil.getZangLiHoliday(lunar);
+                    if (message[0] != null) {
                         tv_holiday.setText(message[0]);
-                    }else{
+                    } else {
                         tv_holiday.setText("");
 
                     }
-                    if(message[1]!=null){
+                    if (message[1] != null) {
                         tv_xiuxing.setText(message[1]);
-                    }else{
+                    } else {
                         tv_xiuxing.setText("");
+                    }
+
+                    //点击的某天 ，判断当前日期到下一个农历节日 还剩余几天
+                    HashMap<String, String> hashMap = Holiday.getLunarHoliday(lunar.lunarYear, year,month,localDate.getDayOfMonth());
+                    if(hashMap.get("day").equals("0")){
+                        tv_countdown.setText(hashMap.get("holiday"));
+                    }else {
+                        tv_countdown.setText("距离"+hashMap.get("holiday")+"，还有"+hashMap.get("day")+"天");
                     }
                 } else {
                     tv_data.setText("");
                     tv_desc.setText("");
                     contentTv.setText("");
                     contentTv.setVisibility(View.GONE);
+                    tv_countdown.setText("");
                 }
             }
 
@@ -312,8 +351,8 @@ public class MonthActivity<activity_month> extends BaseActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MonthActivity.this, DataDisplayActivity.class);
                 // 获取当前选中的日期
-          //      Log.d(TAG, "   当前页面选中 " + selectedDate[0]);
-          //      Log.d(TAG, "   当前页面选中藏历 " + zangli[0]+"年"+zangli[1]+"月"+zangli[2]+"日");
+                //      Log.d(TAG, "   当前页面选中 " + selectedDate[0]);
+                //      Log.d(TAG, "   当前页面选中藏历 " + zangli[0]+"年"+zangli[1]+"月"+zangli[2]+"日");
                 intent.putExtra("YEAR", selectedDate[0].getYear());
                 intent.putExtra("MONTH", selectedDate[0].getMonthOfYear());
                 intent.putExtra("DAY", selectedDate[0].getDayOfMonth());
@@ -336,7 +375,7 @@ public class MonthActivity<activity_month> extends BaseActivity {
         StringBuilder stringBuilder = new StringBuilder();
         if (tempList.isEmpty()) {
             contentTv.setVisibility(View.GONE);
-        }else {
+        } else {
             stringBuilder.append("今日日程").append(":\r\n");
             contentTv.setVisibility(View.VISIBLE);
         }

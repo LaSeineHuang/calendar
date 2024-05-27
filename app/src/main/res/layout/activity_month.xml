@@ -161,7 +161,6 @@
                         android:text=""
                         android:textColor="#666666"
                         android:textSize="12sp" />
-
                     <TextView
                         android:id="@+id/tv_xiuxing"
                         android:layout_width="match_parent"
